@@ -8,6 +8,7 @@ module.exports = function (app) {
         });
     });
 
+    /*
     app.post('/users', (req, res) => {
         const userData = {
             id: null,
@@ -33,5 +34,6 @@ module.exports = function (app) {
                 })
             }
         })
-    });
+
+    }); */
 }

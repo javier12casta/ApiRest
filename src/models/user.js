@@ -24,7 +24,8 @@ userModel.getUsers = (callback) => {
     }
 };
 // Insertar
-
+ 
+/*
 userModel.insertUser = (userData, callback => {
     if (connection){
         connection.query ('INSERT INTO RolPersonas SET ?', userData, 
@@ -40,5 +41,5 @@ userModel.insertUser = (userData, callback => {
         })
     }
 });
-
+*/
 module.exports = userModel;
