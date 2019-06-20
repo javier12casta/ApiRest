@@ -11,7 +11,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 
 //Rutas 
-require('./routes/userRoutes')(app);
+require('./routes/userRoutes')(app); 
 
 //archivos estaticos
 app.listen(app.get('port'), () => {
