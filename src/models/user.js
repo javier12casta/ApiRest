@@ -12,7 +12,7 @@ let userModel = {};
 // Leer 
 userModel.getUsers = (callback) => {
     if (connection) {
-        connection.query ('SELECT * FROM RolPersonas ORDER BY idRolPersonas',
+        connection.query ('SELECT * FROM RolPersona ORDER BY idRolPersona',
             (err, rows) => {
                 if (err) {
                     throw err
