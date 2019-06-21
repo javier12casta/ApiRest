@@ -27,37 +27,27 @@ router.get('/:id', (req, res) => {
 });
 
 // Insertar Rol
-router.post('/', (req, res) => {
+router.post('/RolInsert', (req, res) => {
   const {id, RolPersona, Estado} = req.body;
-  console.log(id, RolPersona, Estado);
-  const query = `
-    SET @id = ?;
-    SET @RolPersona = ?;
-    SET @Estado = ?;
-    CALL RolAddOrEdit(@id, @RolPersona, @Estado);
-  `;
-  mysqlConnection.query(query, [id, RolPersona, Estado], (err, rows, fields) => {
+  console.log(id, RolPersona, Estado); 
+     
+  mysqlConnection.query('INSERT INTO `RolPersona`(`idRolPersona`, `RolPersona`, `Estado`) VALUES (?,?,?)', [ id, RolPersona, Estado], (err, rows, fields) => {
     if(!err) {
       res.json({status: 'Rol Creado'});
     } else {
-      console.log(err);
+      console.log(err); 
     }
-  });
-
+  });  
+ 
 });
 
 //Actualizar Rol
 
-router.put('/:id', (req, res) => {
-  const { name, salary } = req.body;
+router.put('/RolUpdate/:id', (req, res) => {
   const { id } = req.params;
-  const query = `
-    SET @id = ?;
-    SET @RolPersona = ?;
-    SET @Estado = ?;
-    CALL RolAddOrEdit(@id, @RolPersona, @Estado);
-  `;
-  mysqlConnection.query(query, [id, RolPersona, Estado], (err, rows, fields) => {
+  const { RolPersona, Estado } = req.body;
+
+  mysqlConnection.query('UPDATE `RolPersona` SET `idRolPersona`= ?,`RolPersona`= ?,`Estado`=? WHERE `idRolPersona`= ?', [id, RolPersona, Estado, id], (err, rows, fields) => {
     if(!err) {
       res.json({status: 'Rol Actualizado'});
     } else {
