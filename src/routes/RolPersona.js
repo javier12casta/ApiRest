@@ -4,7 +4,7 @@ const router = express.Router();
 const mysqlConnection  = require('../database.js');
 
 // GET todos los Roles
-router.get('/', (req, res) => {
+router.get('/Rol', (req, res) => {
   mysqlConnection.query('SELECT * FROM RolPersona', (err, rows, fields) => {
     if(!err) {
       res.json(rows);
@@ -15,9 +15,9 @@ router.get('/', (req, res) => {
 });
 
 // GET un solo Rol
-router.get('/:id', (req, res) => {
+router.get('/Rol/:id', (req, res) => {
   const { id } = req.params; 
-  mysqlConnection.query('SELECT * FROM RolPersona WHERE id = ?', [id], (err, rows, fields) => {
+  mysqlConnection.query('SELECT * FROM `RolPersona` WHERE `idRolPersona` = ?', [id], (err, rows, fields) => {
     if (!err) {
       res.json(rows[0]);
     } else {
