@@ -3,7 +3,7 @@ const router = express.Router();
 
 const mysqlConnection  = require('../database.js');
 
-// GET todos los Regionales
+// GET todos los generos
 router.get('/Genero', (req, res) => {
   mysqlConnection.query('SELECT * FROM Genero', (err, rows, fields) => {
     if(!err) {
@@ -14,7 +14,7 @@ router.get('/Genero', (req, res) => {
   });  
 });
 
-// GET un solo Regional por id
+// GET un solo genero por id
 router.get('/Genero/:id', (req, res) => {
   const { id } = req.params; 
   mysqlConnection.query('SELECT * FROM `Genero` WHERE `idGenero` = ?', [id], (err, rows, fields) => {
@@ -26,7 +26,7 @@ router.get('/Genero/:id', (req, res) => {
   });
 });
 
-// Insertar Rol
+// Insertar genero
 router.post('/GeneroInsert', (req, res) => {
   const {id, NombreGenero, Iniciales} = req.body;
   console.log(id, NombreGenero, Iniciales); 
@@ -41,7 +41,7 @@ router.post('/GeneroInsert', (req, res) => {
  
 });
 
-//Actualizar Rol
+//Actualizar genero
 
 router.put('/GeneroUpdate/:id', (req, res) => {
   const { id } = req.params;
