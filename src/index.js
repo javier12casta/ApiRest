@@ -13,6 +13,12 @@ app.use(require('./routes/Regional'));
 app.use(require('./routes/genero'));
 app.use(require('./routes/Comunas'));
 app.use(require('./routes/CentroZonal'));
+app.use(require('./routes/Barriosveredas'));
+app.use(require('./routes/Inventario'));
+app.use(require('./routes/Entrega'));
+app.use(require('./routes/Bienestarina'));
+app.use(require('./routes/Beneficiarios'));
+app.use(require('./routes/Acudientes'));
 
 // Starting the server
 app.listen(app.get('port'), () => {

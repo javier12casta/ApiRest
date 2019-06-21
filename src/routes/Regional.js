@@ -25,7 +25,7 @@ router.get('/Regional/:id', (req, res) => {
     }
   });
 });
-
+ 
 // Insertar Regional
 router.post('/RegionalInsert', (req, res) => {
   const {id, Regional} = req.body;
