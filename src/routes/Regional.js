@@ -41,7 +41,7 @@ router.post('/RegionalInsert', (req, res) => {
  
 });
 
-//Actualizar Regional
+//Actualizar Regional g
 
 router.put('/RegionalUpdate/:id', (req, res) => {
   const { id } = req.params;
