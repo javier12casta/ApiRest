@@ -56,4 +56,19 @@ router.put('/RolUpdate/:id', (req, res) => {
   });
 });
 
+// delete Rol
+
+router.delete('/RolDelete/:id', (req, res) => {
+  const { id } = req.params;
+  const { RolPersona, Estado } = req.body;
+
+  mysqlConnection.query('DELETE FROM `RolPersona` WHERE `idRolPersona`= ?', [id, RolPersona, Estado, id], (err, rows, fields) => {
+    if(!err) {
+      res.json({status: 'Rol Borrado'});
+    } else {
+      console.log(err);
+    }
+  });
+});
+
 module.exports = router;

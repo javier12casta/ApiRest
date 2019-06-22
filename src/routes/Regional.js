@@ -28,7 +28,7 @@ router.get('/Regional/:id', (req, res) => {
 
 // Insertar Rol
 router.post('/RegionalInsert', (req, res) => {
-  const {id, Regional} = req.body;
+  const {idRegional, Regional} = req.body;
   console.log(id, Regional); 
      
   mysqlConnection.query('INSERT INTO `Regional`(`idRegional`, `Regional`) VALUES (?,?)', [ id, Regional], (err, rows, fields) => {
@@ -54,6 +54,29 @@ router.put('/RegionalUpdate/:id', (req, res) => {
       console.log(err);
     }
   });
+});
+
+// delete Rol
+
+router.delete('/RegionalDelete/:id', (req, res) => {
+const { 
+id 
+} = req.params;
+const{
+Regional
+} = req.body
+
+mysqlConnection.query('DELETE FROM `Regional` WHERE `idRegional` = ?' , [id, Regional, id], (err, rows, fields) =>{
+
+if(!err){
+
+res.json({status: 'Regional Eliminado'});
+
+}else{
+
+  console.log(err);
+}
+});
 });
 
 module.exports = router;
