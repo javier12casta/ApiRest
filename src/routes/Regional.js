@@ -25,8 +25,8 @@ router.get('/Regional/:id', (req, res) => {
     }
   });
 });
-
-// Insertar Rol
+ 
+// Insertar Regional
 router.post('/RegionalInsert', (req, res) => {
   const {idRegional, Regional} = req.body;
   console.log(id, Regional); 
@@ -41,7 +41,7 @@ router.post('/RegionalInsert', (req, res) => {
  
 });
 
-//Actualizar Rol
+//Actualizar Regional
 
 router.put('/RegionalUpdate/:id', (req, res) => {
   const { id } = req.params;
