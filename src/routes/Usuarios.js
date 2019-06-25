@@ -32,7 +32,7 @@ router.post('/UsuariosInsert', (req, res) => {
     const {Contraseña , idUsuarios , NombreUsuario , PersonalICBF_idPersonaICBF , RolPersona_idRolPersona} = req.body;
     console.log(Contraseña , idUsuarios , NombreUsuario , PersonalICBF_idPersonaICBF , RolPersona_idRolPersona); 
        
-    mysqlConnection.query('INSERT INTO `usuarios`(`Contraseña` ,` idUsuarios` , `NombreUusario `, `PersonalICBF_idPersonaICBF` , `RolPersona_idRolPersona`) VALUES (?,?,?,?,?)', [Contraseña , idUsuarios , NombreUusario , PersonalICBF_idPersonaICBF , RolPersona_idRolPersona], (err, rows, fields) => {
+    mysqlConnection.query('INSERT INTO `usuarios`(`idUsuarios`, `NombreUsuario`, `Contraseña`, `PersonalICBF_idPersonalICBF`, `RolPersona_idRolPersona`) VALUES (?,?,?,?,?)', [idUsuarios , NombreUusario ,Contraseña , PersonalICBF_idPersonaICBF , RolPersona_idRolPersona], (err, rows, fields) => {
       if(!err) {
         res.json({status: 'usuario Creado'});
       } else {

@@ -45,7 +45,7 @@ router.post('/UdsInsert', (req, res) => {
 
 router.put('/UdsUpdate/:id', (req, res) => {
     const {  idUDS  } = req.params;
-    const { BarriosVeredas_idBarriosVeredas, CodigoExternoUDS , CodigoInternoUDS , Direccion , Estado , idUDS , NombreUDS , NombreEntrega_idPuntoEntrega, ResponsableUDS , SuplenteUDS,Telefono } = req.body;
+    const { BarriosVeredas_idBarriosVeredas, CodigoExternoUDS , CodigoInternoUDS , Direccion , Estado , NombreUDS , NombreEntrega_idPuntoEntrega, ResponsableUDS , SuplenteUDS,Telefono } = req.body;
   
     mysqlConnection.query('UPDATE `uds` SET `idUDS ` = ?,`Regional` = ? WHERE `idUDS` = ?', [idUDS,BarriosVeredas_idBarriosVeredas, CodigoExternoUDS , CodigoInternoUDS , Direccion , Estado , idUDS , NombreUDS , NombreEntrega_idPuntoEntrega, ResponsableUDS , SuplenteUDS,Telefono, idUDS], (err, rows, fields) => {
       if(!err) {
@@ -63,7 +63,7 @@ router.delete('/UdsDelete/:id', (req, res) => {
         idUDS
     } = req.params;
     const{
-        BarriosVeredas_idBarriosVeredas, CodigoExternoUDS , CodigoInternoUDS , Direccion , Estado , idUDS , NombreUDS , NombreEntrega_idPuntoEntrega, ResponsableUDS , SuplenteUDS,Telefono
+        BarriosVeredas_idBarriosVeredas, CodigoExternoUDS , CodigoInternoUDS , Direccion , Estado , NombreUDS , NombreEntrega_idPuntoEntrega, ResponsableUDS , SuplenteUDS,Telefono
     } = req.body
     
     mysqlConnection.query('DELETE FROM `uds` WHERE `idUDS` = ?' , [idUDS, BarriosVeredas_idBarriosVeredas, CodigoExternoUDS , CodigoInternoUDS , Direccion , Estado , idUDS , NombreUDS , NombreEntrega_idPuntoEntrega, ResponsableUDS , SuplenteUDS,Telefono, idUDS], (err, rows, fields) =>{

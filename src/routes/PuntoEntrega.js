@@ -45,7 +45,7 @@ router.post('/PuntoEntregaInsert', (req, res) => {
 
 router.put('/RegionalUpdate/:id', (req, res) => {
     const { idPuntoEntrega } = req.params;
-    const { CodigoExternoPE, CodigoInternoPE  , Direccion , Estado , idPuntoEntrega , NombrePE , Responsable , Suplente , Telefono } = req.body;
+    const { CodigoExternoPE, CodigoInternoPE  , Direccion , Estado , NombrePE , Responsable , Suplente , Telefono } = req.body;
   
     mysqlConnection.query('UPDATE `puntoentrega` SET `CodigoExternoPE` = ?, `CodigoInternoPE` = ?, `Direccion` = ?, `Estado` = ?, `idPuntoEntrega` = ? , `NombrePE` = ? , `Responsable` = ? , `Suplente` = ? , `Telefono` = ?  WHERE `idPuntoEntrega` = ?', [CodigoExternoPE, CodigoInternoPE  , Direccion , Estado , idPuntoEntrega , NombrePE , Responsable , Suplente , Telefono , idPuntoEntrega], (err, rows, fields) => {
       if(!err) {
@@ -63,7 +63,7 @@ router.delete('/PuntoEntregaDelete/:id', (req, res) => {
         idPuntoEntrega
     } = req.params;
     const{
-        CodigoExternoPE, CodigoInternoPE  , Direccion , Estado , idPuntoEntrega , NombrePE , Responsable , Suplente , Telefono
+        CodigoExternoPE, CodigoInternoPE  , Direccion , Estado , NombrePE , Responsable , Suplente , Telefono
     } = req.body
     
     mysqlConnection.query('DELETE FROM `puntoentrega` WHERE `idPuntoEntrega` = ?' , [CodigoExternoPE, CodigoInternoPE  , Direccion , Estado , idPuntoEntrega , NombrePE , Responsable , Suplente , Telefono , idPuntoEntrega], (err, rows, fields) =>{
