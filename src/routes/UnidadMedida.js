@@ -80,3 +80,4 @@ router.delete('/UnidadMedidaDelete/:id', (req, res) => {
   });
   
   module.exports = router;
+  

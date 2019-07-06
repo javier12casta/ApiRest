@@ -17,7 +17,7 @@ app.use(require('./routes/Regional'));
 app.use(require('./routes/TipoBienestarina'));
 app.use(require('./routes/TipoDocumento'));
 app.use(require('./routes/UDS'));
-app.use(require('./routes/unidadMedida'));
+app.use(require('./routes/UnidadMedida'));
 app.use(require('./routes/Usuarios'));
 app.use(require('./routes/genero'));
 app.use(require('./routes/Comunas'));
