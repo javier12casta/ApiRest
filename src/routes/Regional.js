@@ -28,7 +28,7 @@ router.get('/Regional/:id', (req, res) => {
  
 // Insertar Regional
 router.post('/RegionalInsert', (req, res) => {
-  const {idRegional, Regional} = req.body;
+  const {id, Regional} = req.body;
   console.log(id, Regional); 
      
   mysqlConnection.query('INSERT INTO `Regional`(`idRegional`, `Regional`) VALUES (?,?)', [ id, Regional], (err, rows, fields) => {

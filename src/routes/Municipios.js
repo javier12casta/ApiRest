@@ -5,7 +5,7 @@ const mysqlConnection  = require('../database.js');
 
 // GET todos los Municipios
 router.get('/Municipios', (req, res) => {
-  mysqlConnection.query('SELECT * FROM municipios', (err, rows, fields) => {
+  mysqlConnection.query('SELECT * FROM Municipios', (err, rows, fields) => {
     if(!err) {
       res.json(rows);
     } else {
@@ -17,7 +17,7 @@ router.get('/Municipios', (req, res) => {
 // GET un solo Municipio por id
 router.get('/Municipio/:id', (req, res) => {
     const { idMunicipios } = req.params; 
-    mysqlConnection.query('SELECT * FROM `municipios` WHERE `idMunicipios` = ?', [idMunicipios], (err, rows, fields) => {
+    mysqlConnection.query('SELECT * FROM `Municipios` WHERE `idMunicipios` = ?', [idMunicipios], (err, rows, fields) => {
       if (!err) {
         res.json(rows[0]);
       } else {
@@ -28,10 +28,10 @@ router.get('/Municipio/:id', (req, res) => {
 
 // Insertar Municipio
 router.post('/MunicipioInsert', (req, res) => {
-    const {CentrosZonales_idCentrosZonales, idMunicipios , Municipios} = req.body;
-    console.log(CentrosZonales_idCentrosZonales, idMunicipios , Municipios); 
+    const {idMunicipios, Municipio, CentrosZonales_idCentrosZonales} = req.body;
+    console.log(CentrosZonales_idCentrosZonales, Municipio, idMunicipios ); 
        
-    mysqlConnection.query('INSERT INTO `municipios`(`CentrosZonales_idCentrosZonales`, `idMunicipios`, `Municipios`) VALUES (?,?,?)', [CentrosZonales_idCentrosZonales, idMunicipios , Municipios], (err, rows, fields) => {
+    mysqlConnection.query('INSERT INTO `Municipios`(`idMunicipios`, `Municipio`,`CentrosZonales_idCentrosZonales`) VALUES (?,?,?)', [ idMunicipios , Municipio, CentrosZonales_idCentrosZonales], (err, rows, fields) => {
       if(!err) {
         res.json({status: 'Municipio Creado'});
       } else {
@@ -45,9 +45,9 @@ router.post('/MunicipioInsert', (req, res) => {
 
 router.put('/MunicipioUpdate/:id', (req, res) => {
     const { idMunicipios } = req.params;
-    const { CentrosZonales_idCentrosZonales , Municipios } = req.body;
+    const { CentrosZonales_idCentrosZonales , Municipio } = req.body;
   
-    mysqlConnection.query('UPDATE `municipios` SET `CentrosZonales_idCentrosZonales` = ? , `idMunicipios` = ?,`Municipios` = ? WHERE `idMunicipios` = ?', [CentrosZonales_idCentrosZonales,idMunicipios , Municipios ,idMunicipios ], (err, rows, fields) => {
+    mysqlConnection.query('UPDATE `Municipios` SET `idMunicipios` = ? ,`CentrosZonales_idCentrosZonales` = ? ,`Municipio` = ? WHERE `idMunicipios` = ?', [CentrosZonales_idCentrosZonales,idMunicipios , Municipio ,idMunicipios ], (err, rows, fields) => {
       if(!err) {
         res.json({status: 'Muncipio Actualizado'});
       } else {
@@ -66,7 +66,7 @@ router.delete('/MunicipioDelete/:id', (req, res) => {
         CentrosZonales_idCentrosZonales , Municipios
     } = req.body
     
-    mysqlConnection.query('DELETE FROM `municipios` WHERE `idMunicipios` = ?' , [CentrosZonales_idCentrosZonales, idMunicipios, Municipios , idMunicipios], (err, rows, fields) =>{
+    mysqlConnection.query('DELETE FROM `Municipios` WHERE `idMunicipios` = ?' , [CentrosZonales_idCentrosZonales, idMunicipios, Municipios , idMunicipios], (err, rows, fields) =>{
     
     if(!err){
     
