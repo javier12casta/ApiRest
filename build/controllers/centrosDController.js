@@ -13,45 +13,45 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class GeneroController {
+class CentrosDController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const genero = yield database_1.default.query('SELECT * FROM Genero');
-            res.json(genero);
+            const centro = yield database_1.default.query('SELECT * FROM CentroDistribucion');
+            res.json(centro);
         });
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const games = yield database_1.default.query('SELECT * FROM Genero WHERE idGenero = ?', [id]);
-            console.log(games.length);
-            if (games.length > 0) {
-                return res.json(games[0]);
+            const centro = yield database_1.default.query('SELECT * FROM CentroDistribucion WHERE idCentroDistribucion = ?', [id]);
+            console.log(centro.length);
+            if (centro.length > 0) {
+                return res.json(centro[0]);
             }
-            res.status(404).json({ text: "The genero doesn't exits" });
+            res.status(404).json({ text: "The Centro Distribucion doesn't exits" });
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield database_1.default.query('INSERT INTO Genero set ?', [req.body]);
-            res.json({ message: 'Genero Saved' });
+            const result = yield database_1.default.query('INSERT INTO CentroDistribucion set ?', [req.body]);
+            res.json({ message: 'Centro Distribucion Saved' });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const oldGame = req.body;
-            yield database_1.default.query('UPDATE Genero set ? WHERE idGenero = ?', [req.body, id]);
-            res.json({ message: "The genero was Updated" });
+            yield database_1.default.query('UPDATE CentroDistribucion set ? WHERE idCentroDistribucion = ?', [req.body, id]);
+            res.json({ message: "The Centro Distribucion was Updated" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM Genero WHERE idGenero = ?', [id]);
-            res.json({ message: "The Genero was deleted" });
+            yield database_1.default.query('DELETE FROM CentroDistribucion WHERE idCentroDistribucion = ?', [id]);
+            res.json({ message: "The Centro Distribucion was deleted" });
         });
     }
 }
-const generoController = new GeneroController;
-exports.default = generoController;
+const centrosDController = new CentrosDController;
+exports.default = centrosDController;

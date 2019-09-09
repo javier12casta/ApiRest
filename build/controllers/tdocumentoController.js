@@ -13,45 +13,45 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class GeneroController {
+class TdocumentoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const genero = yield database_1.default.query('SELECT * FROM Genero');
-            res.json(genero);
+            const TipoDocumento = yield database_1.default.query('SELECT * FROM TipoDocumento');
+            res.json(TipoDocumento);
         });
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const games = yield database_1.default.query('SELECT * FROM Genero WHERE idGenero = ?', [id]);
+            const games = yield database_1.default.query('SELECT * FROM TipoDocumento WHERE idTipoDocumento = ?', [id]);
             console.log(games.length);
             if (games.length > 0) {
                 return res.json(games[0]);
             }
-            res.status(404).json({ text: "The genero doesn't exits" });
+            res.status(404).json({ text: "The TipoDocumento doesn't exits" });
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield database_1.default.query('INSERT INTO Genero set ?', [req.body]);
-            res.json({ message: 'Genero Saved' });
+            const result = yield database_1.default.query('INSERT INTO TipoDocumento set ?', [req.body]);
+            res.json({ message: 'TipoDocumento Saved' });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const oldGame = req.body;
-            yield database_1.default.query('UPDATE Genero set ? WHERE idGenero = ?', [req.body, id]);
-            res.json({ message: "The genero was Updated" });
+            yield database_1.default.query('UPDATE TipoDocumento set ? WHERE idTipoDocumento = ?', [req.body, id]);
+            res.json({ message: "The TipoDocumento was Updated" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM Genero WHERE idGenero = ?', [id]);
-            res.json({ message: "The Genero was deleted" });
+            yield database_1.default.query('DELETE FROM TipoDocumento WHERE idTipoDocumento = ?', [id]);
+            res.json({ message: "The TipoDocumento was deleted" });
         });
     }
 }
-const generoController = new GeneroController;
-exports.default = generoController;
+const tdocumentoController = new TdocumentoController;
+exports.default = tdocumentoController;

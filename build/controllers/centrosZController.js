@@ -13,45 +13,45 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
-class GeneroController {
+class CentrosZController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const genero = yield database_1.default.query('SELECT * FROM Genero');
-            res.json(genero);
+            const centro = yield database_1.default.query('SELECT * FROM CentrosZonales');
+            res.json(centro);
         });
     }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const games = yield database_1.default.query('SELECT * FROM Genero WHERE idGenero = ?', [id]);
+            const games = yield database_1.default.query('SELECT * FROM CentrosZonales WHERE idCentrosZonales = ?', [id]);
             console.log(games.length);
             if (games.length > 0) {
                 return res.json(games[0]);
             }
-            res.status(404).json({ text: "The genero doesn't exits" });
+            res.status(404).json({ text: "The Centro Zonal doesn't exits" });
         });
     }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const result = yield database_1.default.query('INSERT INTO Genero set ?', [req.body]);
-            res.json({ message: 'Genero Saved' });
+            const result = yield database_1.default.query('INSERT INTO CentrosZonales set ?', [req.body]);
+            res.json({ message: 'Centro Zonal Saved' });
         });
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
             const oldGame = req.body;
-            yield database_1.default.query('UPDATE Genero set ? WHERE idGenero = ?', [req.body, id]);
-            res.json({ message: "The genero was Updated" });
+            yield database_1.default.query('UPDATE CentrosZonales set ? WHERE idCentrosZonales = ?', [req.body, id]);
+            res.json({ message: "The Centro Zonal was Updated" });
         });
     }
     delete(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            yield database_1.default.query('DELETE FROM Genero WHERE idGenero = ?', [id]);
-            res.json({ message: "The Genero was deleted" });
+            yield database_1.default.query('DELETE FROM CentrosZonales WHERE idCentrosZonales = ?', [id]);
+            res.json({ message: "The Centro Zonal was deleted" });
         });
     }
 }
-const generoController = new GeneroController;
-exports.default = generoController;
+const centrosZController = new CentrosZController;
+exports.default = centrosZController;
