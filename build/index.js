@@ -50,6 +50,12 @@ class Server {
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
+    //Global  variables 
+    global() {
+        this.app.use((res, req, next) => {
+            next();
+        });
+    }
     routes() {
         this.app.use('/', indexRoutes_1.default);
         this.app.use('/genero', generoRoutes_1.default);

@@ -53,6 +53,13 @@ class Server {
         this.app.use(express.urlencoded({extended: false}));
     }
 
+    //Global  variables 
+    global():void {
+        this.app.use((res,req,next)=>{
+            next();
+        });
+    }
+
     routes(): void {
         this.app.use('/', indexRoutes);
         this.app.use('/genero', generoRoutes);
