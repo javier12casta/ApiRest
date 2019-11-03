@@ -6,7 +6,7 @@ import pool from '../database';
 class BiometricoController {
 
     public async list(req: Request, res: Response): Promise<void> {
-        const biometrico = await pool.query('SELECT ´Huella´ FROM uibiometrico');
+        const biometrico = await pool.query('SELECT * FROM uibiometrico');
         res.json(biometrico);
     }
 }

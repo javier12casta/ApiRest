@@ -33,6 +33,7 @@ import tdocumentoRoutes from './routes/tdocumentoRoutes';
 import udsRoutes from './routes/udsRoutes';
 import unidadRoutes from './routes/unidadRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
+import biometricoRoutes from './routes/biometricoRoutes';
 
 class Server {
 
@@ -91,6 +92,7 @@ class Server {
         this.app.use('/uds', udsRoutes);
         this.app.use('/unidad', unidadRoutes);
         this.app.use('/usuario', usuariosRoutes);
+        this.app.use('/biometrico', biometricoRoutes);
     }
 
     start() {

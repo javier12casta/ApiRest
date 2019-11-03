@@ -37,6 +37,7 @@ const tdocumentoRoutes_1 = __importDefault(require("./routes/tdocumentoRoutes"))
 const udsRoutes_1 = __importDefault(require("./routes/udsRoutes"));
 const unidadRoutes_1 = __importDefault(require("./routes/unidadRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
+const biometricoRoutes_1 = __importDefault(require("./routes/biometricoRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -87,6 +88,7 @@ class Server {
         this.app.use('/uds', udsRoutes_1.default);
         this.app.use('/unidad', unidadRoutes_1.default);
         this.app.use('/usuario', usuariosRoutes_1.default);
+        this.app.use('/biometrico', biometricoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
