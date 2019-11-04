@@ -31,6 +31,17 @@ class UsuariosController {
             res.status(404).json({ text: "The Usuario doesn't exits" });
         });
     }
+    getuser(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { user } = req.params;
+            const games = yield database_1.default.query('SELECT * FROM `usuarios` WHERE NombreUsuarioSistema = ?', [user]);
+            console.log(games.length);
+            if (games.length > 0) {
+                return res.json(games[0]);
+            }
+            res.status(404).json({ text: "The Usuario doesn't exits" });
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.query('INSERT INTO Usuarios set ?', [req.body]);
