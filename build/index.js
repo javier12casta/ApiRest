@@ -39,6 +39,9 @@ const unidadRoutes_1 = __importDefault(require("./routes/unidadRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const biometricoRoutes_1 = __importDefault(require("./routes/biometricoRoutes"));
 const devolucionesRoutes_1 = __importDefault(require("./routes/devolucionesRoutes"));
+const entregabeRoutes_1 = __importDefault(require("./routes/entregabeRoutes"));
+const entregacendRoutes_1 = __importDefault(require("./routes/entregacendRoutes"));
+const entregacoRoutes_1 = __importDefault(require("./routes/entregacoRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -91,9 +94,9 @@ class Server {
         this.app.use('/usuario', usuariosRoutes_1.default);
         this.app.use('/biometrico', biometricoRoutes_1.default);
         this.app.use('/devoluciones', devolucionesRoutes_1.default);
-        this.app.use('/entregabeneficiario', biometricoRoutes_1.default);
-        this.app.use('/entregacentrod', biometricoRoutes_1.default);
-        this.app.use('/entregaconsumo', biometricoRoutes_1.default);
+        this.app.use('/entregabeneficiario', entregabeRoutes_1.default);
+        this.app.use('/entregacentrod', entregacendRoutes_1.default);
+        this.app.use('/entregaconsumo', entregacoRoutes_1.default);
         this.app.use('/recuento', biometricoRoutes_1.default);
         this.app.use('/traslados', biometricoRoutes_1.default);
         this.app.use('/Acta', biometricoRoutes_1.default);
