@@ -34,6 +34,7 @@ import udsRoutes from './routes/udsRoutes';
 import unidadRoutes from './routes/unidadRoutes';
 import usuariosRoutes from './routes/usuariosRoutes';
 import biometricoRoutes from './routes/biometricoRoutes';
+import devolucionesRoutes from './routes/devolucionesRoutes';
 
 class Server {
 
@@ -93,6 +94,15 @@ class Server {
         this.app.use('/unidad', unidadRoutes);
         this.app.use('/usuario', usuariosRoutes);
         this.app.use('/biometrico', biometricoRoutes);
+
+        this.app.use('/devoluciones', devolucionesRoutes);
+        this.app.use('/entregabeneficiario', biometricoRoutes);
+        this.app.use('/entregacentrod', biometricoRoutes);
+        this.app.use('/entregaconsumo', biometricoRoutes);
+        this.app.use('/recuento', biometricoRoutes);
+        this.app.use('/traslados', biometricoRoutes);
+        this.app.use('/Acta', biometricoRoutes);
+
     }
 
     start() {

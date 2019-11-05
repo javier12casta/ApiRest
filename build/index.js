@@ -38,6 +38,7 @@ const udsRoutes_1 = __importDefault(require("./routes/udsRoutes"));
 const unidadRoutes_1 = __importDefault(require("./routes/unidadRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const biometricoRoutes_1 = __importDefault(require("./routes/biometricoRoutes"));
+const devolucionesRoutes_1 = __importDefault(require("./routes/devolucionesRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -89,6 +90,13 @@ class Server {
         this.app.use('/unidad', unidadRoutes_1.default);
         this.app.use('/usuario', usuariosRoutes_1.default);
         this.app.use('/biometrico', biometricoRoutes_1.default);
+        this.app.use('/devoluciones', devolucionesRoutes_1.default);
+        this.app.use('/entregabeneficiario', biometricoRoutes_1.default);
+        this.app.use('/entregacentrod', biometricoRoutes_1.default);
+        this.app.use('/entregaconsumo', biometricoRoutes_1.default);
+        this.app.use('/recuento', biometricoRoutes_1.default);
+        this.app.use('/traslados', biometricoRoutes_1.default);
+        this.app.use('/Acta', biometricoRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
