@@ -38,6 +38,9 @@ import devolucionesRoutes from './routes/devolucionesRoutes';
 import entregabeRoutes from './routes/entregabeRoutes';
 import entregacendRoutes from './routes/entregacendRoutes';
 import entregacoRoutes from './routes/entregacoRoutes';
+import recuentoRoutes from './routes/recuentoRoutes';
+import trasladosRoutes from './routes/trasladosRoutes';
+import actaRoutes from './routes/actaRoutes';
 
 class Server {
 
@@ -102,9 +105,9 @@ class Server {
         this.app.use('/entregabeneficiario', entregabeRoutes);
         this.app.use('/entregacentrod', entregacendRoutes);
         this.app.use('/entregaconsumo', entregacoRoutes);
-        this.app.use('/recuento', biometricoRoutes);
-        this.app.use('/traslados', biometricoRoutes);
-        this.app.use('/Acta', biometricoRoutes);
+        this.app.use('/recuento', recuentoRoutes);
+        this.app.use('/traslados', trasladosRoutes);
+        this.app.use('/Acta', actaRoutes);
 
     }
 
