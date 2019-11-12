@@ -20,6 +20,17 @@ class RolController {
             res.json(rol);
         });
     }
+    getRol(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { rol } = req.params;
+            const games = yield database_1.default.query('SELECT * FROM `RolPersona` WHERE RolPersona = ?', [rol]);
+            console.log(games.length);
+            if (games.length > 0) {
+                return res.json(games[0]);
+            }
+            res.status(404).json({ text: "The Rol doesn't exits" });
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

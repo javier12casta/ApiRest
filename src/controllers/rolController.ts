@@ -8,6 +8,16 @@ class RolController {
     public async list(req: Request, res: Response): Promise<void> {
         const rol = await pool.query('SELECT * FROM RolPersona');
         res.json(rol);
+    } 
+
+    public async getRol(req: Request, res: Response): Promise<any> {
+        const {rol} = req.params
+        const games = await pool.query('SELECT * FROM `RolPersona` WHERE RolPersona = ?', [rol] );
+        console.log(games.length);
+        if (games.length > 0) {
+            return res.json(games[0]);
+        }
+        res.status(404).json({ text: "The Rol doesn't exits" });
     }
 
     public async getOne(req: Request, res: Response): Promise<any> {

@@ -12,6 +12,7 @@ class RolRoutes {
 
     config() {
         this.router.get('/', rolController.list);
+        this.router.get('/rolnom/:rol', rolController.getRol);
         this.router.get('/:id', rolController.getOne);
         this.router.post('/', rolController.create);
         this.router.put('/:id', rolController.update);
