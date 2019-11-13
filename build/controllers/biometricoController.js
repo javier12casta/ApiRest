@@ -16,7 +16,7 @@ const database_1 = __importDefault(require("../database"));
 class BiometricoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const biometrico = yield database_1.default.query('SELECT * FROM uibiometrico');
+            const biometrico = yield database_1.default.query('SELECT Huella FROM uibiometrico');
             res.json(biometrico);
         });
     }
