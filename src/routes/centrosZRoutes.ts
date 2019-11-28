@@ -12,10 +12,11 @@ class CentrosZRoutes {
 
     config() {
         this.router.get('/', centrosZController.list);
+        this.router.get('/tabla', centrosZController.tabla);
         this.router.get('/:id', centrosZController.getOne);
         this.router.post('/', centrosZController.create);
         this.router.put('/:id', centrosZController.update);
-        this.router.delete('/:id', centrosZController.delete);
+        this.router.delete('/:id', centrosZController.delete); 
     }
 
 }

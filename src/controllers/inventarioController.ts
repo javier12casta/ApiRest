@@ -20,6 +20,16 @@ class InventarioController {
         res.status(404).json({ text: "The Inventario doesn't exits" });
     }
 
+    public async getInv(req: Request, res: Response): Promise<any> {
+        const { nombre } = req.params;
+        const games = await pool.query('SELECT * FROM Inventario WHERE 	Nombre = ?', [nombre]);
+        console.log(games.length);
+        if (games.length > 0) {
+            return res.json(games[0]);
+        }
+        res.status(404).json({ text: "The Inventario doesn't exits" });
+    }
+
     public async create(req: Request, res: Response): Promise<void> {
         const result = await pool.query('INSERT INTO Inventario set ?', [req.body]);
         res.json({ message: 'Inventario Saved' });

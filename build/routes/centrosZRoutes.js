@@ -12,6 +12,7 @@ class CentrosZRoutes {
     }
     config() {
         this.router.get('/', centrosZController_1.default.list);
+        this.router.get('/tabla', centrosZController_1.default.tabla);
         this.router.get('/:id', centrosZController_1.default.getOne);
         this.router.post('/', centrosZController_1.default.create);
         this.router.put('/:id', centrosZController_1.default.update);

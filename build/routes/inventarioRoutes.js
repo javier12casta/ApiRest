@@ -13,6 +13,7 @@ class InventarioRoutes {
     config() {
         this.router.get('/', inventarioController_1.default.list);
         this.router.get('/:id', inventarioController_1.default.getOne);
+        this.router.get('/:nombre', inventarioController_1.default.getInv);
         this.router.post('/', inventarioController_1.default.create);
         this.router.put('/:id', inventarioController_1.default.update);
         this.router.delete('/:id', inventarioController_1.default.delete);

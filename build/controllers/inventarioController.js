@@ -31,6 +31,17 @@ class InventarioController {
             res.status(404).json({ text: "The Inventario doesn't exits" });
         });
     }
+    getInv(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { nombre } = req.params;
+            const games = yield database_1.default.query('SELECT * FROM Inventario WHERE 	Nombre = ?', [nombre]);
+            console.log(games.length);
+            if (games.length > 0) {
+                return res.json(games[0]);
+            }
+            res.status(404).json({ text: "The Inventario doesn't exits" });
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.query('INSERT INTO Inventario set ?', [req.body]);

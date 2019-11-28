@@ -20,6 +20,12 @@ class CentrosZController {
             res.json(centro);
         });
     }
+    tabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const centro = yield database_1.default.query('SELECT c.idCentrosZonales, c.NombreCentroZonal,m.Municipio,c.CodigoExternoJcz, c.CodigoExternoCZ, c.Estado, r.Regional, c.Comuna FROM centroszonales c, municipios m, regional r where c.idMunicipios = m.idMunicipios AND c.idRegional = r.idRegional');
+            res.json(centro);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

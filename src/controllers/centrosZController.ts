@@ -9,6 +9,10 @@ class CentrosZController {
         const centro = await pool.query('SELECT * FROM CentrosZonales');
         res.json(centro);
     }
+    public async tabla(req: Request, res: Response): Promise<void> {
+        const centro = await pool.query('SELECT c.idCentrosZonales, c.NombreCentroZonal,m.Municipio,c.CodigoExternoJcz, c.CodigoExternoCZ, c.Estado, r.Regional, c.Comuna FROM centroszonales c, municipios m, regional r where c.idMunicipios = m.idMunicipios AND c.idRegional = r.idRegional');
+        res.json(centro);
+    }
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
