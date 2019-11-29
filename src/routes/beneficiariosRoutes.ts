@@ -12,6 +12,7 @@ class BeneficiariosRoutes {
 
     config() {
         this.router.get('/', beneficiariosController.list);
+        this.router.get('/tablab', beneficiariosController.beneficiariosabla);
         this.router.get('/:id', beneficiariosController.getOne);
         this.router.post('/', beneficiariosController.create);
         this.router.put('/:id', beneficiariosController.update);

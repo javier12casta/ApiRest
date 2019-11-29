@@ -10,6 +10,12 @@ class ListaCController {
         res.json(lista);
     }
 
+    public async tablac(req: Request, res: Response): Promise<void> {
+        const lista = await pool.query('SELECT c.idListadoCursos , c.NombreAgenteE , c.NumeroDocumento ,DATE_FORMAT(c.Fecha,"%d-%m-%Y") as Fecha ,c.Estado , t.NombreTipo as tipodocumento,CONCAT(m.PrimerNombre," " ,m.SegundoNombre," " , m.PrimerApellido," " , m.SegundoApellido) As nombrecompleto FROM listadocursos c, beneficiarios m, tipodocumento t where c.idBenefiarios = m.idBeneficiarios');
+        res.json(lista);
+    }  
+
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM ListadoCursos WHERE idListadoCursos = ?', [id]);

@@ -20,6 +20,12 @@ class BeneficiariosController {
             res.json(beneficiario);
         });
     }
+    beneficiariosabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const beneficiario = yield database_1.default.query(' SELECT c.`idBeneficiarios`, c.`NumeroDocumento`,DATE_FORMAT(c.`FechaIngreso`,"%d-%m-%Y") as FechaI , DATE_FORMAT(c.`FechaNacimiento`,"%d-%m-%Y") as FechaN , c.`PrimerNombre`, c.`PrimerApellido`, c.`SegundoNombre`, c.`Direccion`, c.`Pais`, c.`Departamento`, c.`Municipio`, c.`TelefonoFijo`, c.`TelefonoFijo2`, c.`TelefonoMovil`, c.`TelefonoMovil2`, c.`Email`, c.`Estado`, c.`SegundoApellido`, c.`ServicioOmodalidad`,m.NombreGenero, t.NombreTipo, u.NombreUDS FROM beneficiarios c, genero m, tipodocumento t , uds u where c.idGenero = m.idGenero and c.idTipoDocumento = t.idTipoDocumento and c.idUDS = u.idUDS');
+            res.json(beneficiario);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

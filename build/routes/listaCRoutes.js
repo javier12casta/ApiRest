@@ -12,6 +12,7 @@ class ListaCRoutes {
     }
     config() {
         this.router.get('/', listaCController_1.default.list);
+        this.router.get('/tablac', listaCController_1.default.tablac);
         this.router.get('/:id', listaCController_1.default.getOne);
         this.router.post('/', listaCController_1.default.create);
         this.router.put('/:id', listaCController_1.default.update);

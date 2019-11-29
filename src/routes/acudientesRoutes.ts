@@ -12,6 +12,7 @@ class AcudientesRoutes {
 
     config() {
         this.router.get('/', acudientesController.list);
+        this.router.get('/tablaA', acudientesController.TablaA);
         this.router.get('/:id', acudientesController.getOne);
         this.router.post('/', acudientesController.create);
         this.router.put('/:id', acudientesController.update);

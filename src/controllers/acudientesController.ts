@@ -10,6 +10,11 @@ class AcudientesController {
         res.json(acudiente);
     }
 
+    public async TablaA(req: Request, res: Response): Promise<void> {
+        const acudiente = await pool.query('SELECT c.idAcudientes , c.Nombres , c.Apellidos , c.NumeroDocumento , c.Parentesco ,DATE_FORMAT(c.FechaNacimiento,"%d-%m-%Y") as FechaN ,DATE_FORMAT(c.FechaIngreso,"%d-%m-%Y") as FechaI FROM acudientes c');
+        res.json(acudiente);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM Acudientes WHERE idAcudientes = ?', [id]);

@@ -20,6 +20,12 @@ class AcudientesController {
             res.json(acudiente);
         });
     }
+    TablaA(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const acudiente = yield database_1.default.query('SELECT c.idAcudientes , c.Nombres , c.Apellidos , c.NumeroDocumento , c.Parentesco ,DATE_FORMAT(c.FechaNacimiento,"%d-%m-%Y") as FechaN ,DATE_FORMAT(c.FechaIngreso,"%d-%m-%Y") as FechaI FROM acudientes c');
+            res.json(acudiente);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
