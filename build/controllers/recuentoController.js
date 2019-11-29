@@ -20,6 +20,12 @@ class RecuentoController {
             res.json(entrega);
         });
     }
+    tabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const entrega = yield database_1.default.query('SELECT r.idrecuentroinventario, r.lote, DATE_FORMAT(r.fechavencimiento,"%d-%m-%Y") as fechavencimiento, r.unidadmedida1, r.cantidad, r.cantidadcontada, r.unidadmedida2, re.TipoBienesterina, c.Nombre as centrodistribucion, a.Nombre as almacenes FROM recuentroinventario r, referenciabienestarina re, centrodistribucion c, almacenes a WHERE r.idTipoBienesterina = re.idTipoBienesterina AND r.idCentroDistribucion = c.idCentroDistribucion AND r.idAlmacenes = a.idAlmacenes');
+            res.json(entrega);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

@@ -12,6 +12,7 @@ class RecuentoRoutes {
 
     config() {
         this.router.get('/', recuentocoController.list);
+        this.router.get('/tabla', recuentocoController.tabla);
         this.router.get('/:id', recuentocoController.getOne);
         this.router.post('/', recuentocoController.create);
         this.router.put('/:id', recuentocoController.update);

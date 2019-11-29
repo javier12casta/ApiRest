@@ -10,6 +10,11 @@ class RecuentoController {
         res.json(entrega);
     }
 
+    public async tabla(req: Request, res: Response): Promise<void> {
+        const entrega = await pool.query('SELECT r.idrecuentroinventario, r.lote, DATE_FORMAT(r.fechavencimiento,"%d-%m-%Y") as fechavencimiento, r.unidadmedida1, r.cantidad, r.cantidadcontada, r.unidadmedida2, re.TipoBienesterina, c.Nombre as centrodistribucion, a.Nombre as almacenes FROM recuentroinventario r, referenciabienestarina re, centrodistribucion c, almacenes a WHERE r.idTipoBienesterina = re.idTipoBienesterina AND r.idCentroDistribucion = c.idCentroDistribucion AND r.idAlmacenes = a.idAlmacenes');
+        res.json(entrega);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM recuentroinventario WHERE idrecuentroinventario = ?', [id]);

@@ -20,6 +20,12 @@ class TrasladosController {
             res.json(entrega);
         });
     }
+    tabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const entrega = yield database_1.default.query('SELECT t.idTraslados, t.lote,DATE_FORMAT(t.fechavencimiento,"%d-%m-%Y") as fechavencimiento, t.unidad,DATE_FORMAT(t.fecharegistro,"%d-%m-%Y") as fecharegistro, r.TipoBienesterina,c.Nombre AS centroorigen, a.Nombre as almancenorigen, a.Nombre as almacendestino FROM traslados t, referenciabienestarina r, centrodistribucion c, almacenes a WHERE t.idTipoBienesterina = r.idTipoBienesterina AND t.idCentroDistribucion = c.idCentroDistribucion AND t.idAlmacenesOrigen = a.idAlmacenes AND t.idAlmacenesDestino = a.idAlmacenes');
+            res.json(entrega);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

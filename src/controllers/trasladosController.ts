@@ -10,6 +10,11 @@ class TrasladosController {
         res.json(entrega);
     }
 
+    public async tabla(req: Request, res: Response): Promise<void> {
+        const entrega = await pool.query('SELECT t.idTraslados, t.lote,DATE_FORMAT(t.fechavencimiento,"%d-%m-%Y") as fechavencimiento, t.unidad,DATE_FORMAT(t.fecharegistro,"%d-%m-%Y") as fecharegistro, r.TipoBienesterina,c.Nombre AS centroorigen, a.Nombre as almancenorigen, a.Nombre as almacendestino FROM traslados t, referenciabienestarina r, centrodistribucion c, almacenes a WHERE t.idTipoBienesterina = r.idTipoBienesterina AND t.idCentroDistribucion = c.idCentroDistribucion AND t.idAlmacenesOrigen = a.idAlmacenes AND t.idAlmacenesDestino = a.idAlmacenes');
+        res.json(entrega);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM traslados WHERE idTraslados = ?', [id]);

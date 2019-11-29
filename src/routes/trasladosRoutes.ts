@@ -12,6 +12,7 @@ class TrasladosRoutes {
 
     config() {
         this.router.get('/', trasladosController.list);
+        this.router.get('/tabla', trasladosController.tabla);
         this.router.get('/:id', trasladosController.getOne);
         this.router.post('/', trasladosController.create);
         this.router.put('/:id', trasladosController.update);
