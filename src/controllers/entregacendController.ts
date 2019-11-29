@@ -9,6 +9,10 @@ class EntregacendController {
         const entrega = await pool.query('SELECT * FROM entregacentrodistribucion');
         res.json(entrega);
     }
+    public async tabla(req: Request, res: Response): Promise<void> {
+        const entrega = await pool.query('SELECT e.identregacentrodistribucion,e.lote,DATE_FORMAT(e.fechavencimiento,"%d-%m-%Y") as fechavencimiento , e.cantidad,e.unidad,DATE_FORMAT(e.fecharegistro,"%d-%m-%Y") as fecharegistro,c.Nombre as centroorigen, c.Nombre as centrodestino, a.Nombre, r.TipoBienesterina FROM entregacentrodistribucion e, centrodistribucion c, almacenes a,  referenciabienestarina r WHERE e.idCentroDistribucionOrigen = c.idCentroDistribucion AND e.idCentroDistribucionDestino=c.idCentroDistribucion AND e.idAlmacen = a.idAlmacenes AND e.idTipoBienesterina = r.idTipoBienesterina');
+        res.json(entrega);
+    }
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;

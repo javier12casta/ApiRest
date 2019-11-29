@@ -12,6 +12,7 @@ class EntregacendRoutes {
 
     config() {
         this.router.get('/', entregacendController.list);
+        this.router.get('/tabla', entregacendController.tabla);
         this.router.get('/:id', entregacendController.getOne);
         this.router.post('/', entregacendController.create);
         this.router.put('/:id', entregacendController.update);
