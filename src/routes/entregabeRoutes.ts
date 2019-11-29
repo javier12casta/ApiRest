@@ -12,6 +12,7 @@ class EntregabeRoutes {
 
     config() {
         this.router.get('/', entregabeController.list);
+        this.router.get('/tabla', entregabeController.tabla);
         this.router.get('/:id', entregabeController.getOne);
         this.router.post('/', entregabeController.create);
         this.router.put('/:id', entregabeController.update);
