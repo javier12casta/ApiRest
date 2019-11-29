@@ -12,6 +12,7 @@ class BienestarinaRoutes {
 
     config() {
         this.router.get('/', bienestarinaController.list);
+        this.router.get('/tabla', bienestarinaController.tabla);
         this.router.get('/:id', bienestarinaController.getOne);
         this.router.post('/', bienestarinaController.create);
         this.router.put('/:id', bienestarinaController.update);
