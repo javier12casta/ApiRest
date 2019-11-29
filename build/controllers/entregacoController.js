@@ -20,6 +20,12 @@ class EntregacoController {
             res.json(entrega);
         });
     }
+    tabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const entrega = yield database_1.default.query('SELECT e.idEntregaconsumointerno, e.lote,DATE_FORMAT(e.fechavencimiento,"%d-%m-%Y") as fechavencimiento, e.cantidad, e.unidad, DATE_FORMAT(e.fecharegistro,"%d-%m-%Y") as fecharegistro, r.TipoBienesterina, c.Nombre as centrodistribucion, a.Nombre as almacenes FROM entregaconsumointerno e, referenciabienestarina r, centrodistribucion c, almacenes a WHERE e.idTipoBienesterina = r.idTipoBienesterina AND e.idCentroDistribucion = c.idCentroDistribucion AND e.idAlmacenes = a.idAlmacenes');
+            res.json(entrega);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

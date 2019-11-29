@@ -12,6 +12,7 @@ class EntregacoRoutes {
     }
     config() {
         this.router.get('/', entregacoController_1.default.list);
+        this.router.get('/tabla', entregacoController_1.default.tabla);
         this.router.get('/:id', entregacoController_1.default.getOne);
         this.router.post('/', entregacoController_1.default.create);
         this.router.put('/:id', entregacoController_1.default.update);
