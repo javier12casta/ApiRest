@@ -12,6 +12,7 @@ class UdsRoutes {
 
     config() {
         this.router.get('/', udsController.list);
+        this.router.get('/tablau', udsController.tablau);
         this.router.get('/:id', udsController.getOne);
         this.router.post('/', udsController.create);
         this.router.put('/:id', udsController.update);

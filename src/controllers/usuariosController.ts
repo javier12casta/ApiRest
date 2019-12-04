@@ -10,6 +10,11 @@ class UsuariosController {
         res.json(Usuarios);
     }
 
+    public async tablausuarios(req: Request, res: Response): Promise<void> {
+        const Usuarios = await pool.query('');
+        res.json(Usuarios);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM Usuarios WHERE idUsuarios = ?', [id]);

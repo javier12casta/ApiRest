@@ -12,6 +12,7 @@ class UdsRoutes {
     }
     config() {
         this.router.get('/', udsController_1.default.list);
+        this.router.get('/tablau', udsController_1.default.tablau);
         this.router.get('/:id', udsController_1.default.getOne);
         this.router.post('/', udsController_1.default.create);
         this.router.put('/:id', udsController_1.default.update);

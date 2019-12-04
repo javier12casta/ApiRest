@@ -10,6 +10,11 @@ class UdsController {
         res.json(UDS);
     }
 
+    public async tablau(req: Request, res: Response): Promise<void> {
+        const UDS = await pool.query('SELECT u.`idUDS`, u.`NombreUDS`, u.`CodigoInternoUDS`, u.`Direccion`, u.`ReponsableUDS`, u.`Estado`, u.`Telefono`, u.`CodigoExternoUDS`, p.NombrePE, c.NombreCentroZonal, c.`Comuna`, c.`Barrio` FROM uds u , puntoentrega p , centroszonales c WHERE u.idPuntoEntrega = p.idPuntoEntrega and u.idCentrosZonales = c.idCentrosZonales');
+        res.json(UDS);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM UDS WHERE idUDS = ?', [id]);

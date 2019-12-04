@@ -20,6 +20,12 @@ class UdsController {
             res.json(UDS);
         });
     }
+    tablau(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const UDS = yield database_1.default.query('SELECT u.`idUDS`, u.`NombreUDS`, u.`CodigoInternoUDS`, u.`Direccion`, u.`ReponsableUDS`, u.`Estado`, u.`Telefono`, u.`CodigoExternoUDS`, p.NombrePE, c.NombreCentroZonal, c.`Comuna`, c.`Barrio` FROM uds u , puntoentrega p , centroszonales c WHERE u.idPuntoEntrega = p.idPuntoEntrega and u.idCentrosZonales = c.idCentrosZonales');
+            res.json(UDS);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
