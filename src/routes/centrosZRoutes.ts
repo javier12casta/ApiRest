@@ -13,6 +13,7 @@ class CentrosZRoutes {
     config() {
         this.router.get('/', centrosZController.list);
         this.router.get('/tabla', centrosZController.tabla);
+        this.router.get('/duplicadosz', centrosZController.DuplicadosCentroZonales);
         this.router.get('/:id', centrosZController.getOne);
         this.router.post('/', centrosZController.create);
         this.router.put('/:id', centrosZController.update);

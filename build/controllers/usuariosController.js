@@ -20,6 +20,24 @@ class UsuariosController {
             res.json(Usuarios);
         });
     }
+    tablausuariosc(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const Usuarios = yield database_1.default.query('SELECT u.idUsuarios, u.Nombres, u.Apellidos, u.Estado, u.NumeroDocumento, DATE_FORMAT(u.FechaIngreso,"%d-%m-%Y") AS FechaIngreso, u.NombreUsuarioSistema, u.Direccion, u.TelefonoFijo, u.TelefonoFijo2, u.TelefonoMovil, u.TelefonoMovil2, u.Email, t.NombreTipo, r.RolPersona, c.NombreCentroZonal FROM usuarios u, tipodocumento t , centroszonales c , rolpersona r WHERE  u.idTipoDocumento = t.idTipoDocumento  and u.TipoUsuario = r.idRolPersona and u.idCentrosZonales = c.idCentrosZonales;');
+            res.json(Usuarios);
+        });
+    }
+    tablausuariosp(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const Usuarios = yield database_1.default.query('SELECT u.idUsuarios, u.Nombres, u.Apellidos, u.Estado, u.NumeroDocumento, DATE_FORMAT(u.FechaIngreso,"%d-%m-%Y") AS FechaIngreso, u.NombreUsuarioSistema, u.Direccion, u.TelefonoFijo, u.TelefonoFijo2, u.TelefonoMovil, u.TelefonoMovil2, u.Email, t.NombreTipo, r.RolPersona, p.NombrePE FROM usuarios u, tipodocumento t, rolpersona r, puntoentrega p WHERE  u.idTipoDocumento = t.idTipoDocumento  and u.TipoUsuario = r.idRolPersona and u.idPuntoEntrega = p.idPuntoEntrega;');
+            res.json(Usuarios);
+        });
+    }
+    tablausuariosu(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const Usuarios = yield database_1.default.query('SELECT u.idUsuarios, u.Nombres, u.Apellidos, u.Estado, u.NumeroDocumento,DATE_FORMAT(u.FechaIngreso,"%d-%m-%Y") AS FechaIngreso, u.NombreUsuarioSistema, u.Direccion, u.TelefonoFijo, u.TelefonoFijo2, u.TelefonoMovil, u.TelefonoMovil2, u.Email, t.NombreTipo, r.RolPersona, ud.NombreUDS FROM usuarios u, tipodocumento t, rolpersona r, uds ud WHERE  u.idTipoDocumento = t.idTipoDocumento  and u.TipoUsuario = r.idRolPersona and u.idUDS = ud.idUDS;');
+            res.json(Usuarios);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

@@ -14,6 +14,12 @@ class CentrosZController {
         res.json(centro);
     }
 
+    public async DuplicadosCentroZonales(req: Request, res: Response): Promise<void> {
+        const centro = await pool.query('SELECT NombreCentroZonal , CodigoExternoCZ , CodigoExternoJcz , count(*) AS cantidadD FROM centroszonales GROUP BY NombreCentroZonal HAVING COUNT(*)> 1');
+        res.json(centro);
+    }
+
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM CentrosZonales WHERE idCentrosZonales = ?', [id]);
