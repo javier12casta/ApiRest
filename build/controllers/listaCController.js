@@ -22,7 +22,7 @@ class ListaCController {
     }
     tablac(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const lista = yield database_1.default.query('SELECT c.idListadoCursos , c.NombreAgenteE , c.NumeroDocumento ,DATE_FORMAT(c.Fecha,"%d-%m-%Y") as Fecha ,c.Estado , t.NombreTipo as tipodocumento,CONCAT(m.PrimerNombre," " ,m.SegundoNombre," " , m.PrimerApellido," " , m.SegundoApellido) As nombrecompleto FROM listadocursos c, beneficiarios m, tipodocumento t where c.idBenefiarios = m.idBeneficiarios');
+            const lista = yield database_1.default.query('SELECT c.idListadoCursos , c.NombreAgenteE , c.NumeroDocumento ,DATE_FORMAT(c.Fecha,"%d-%m-%Y") as Fecha ,c.Estado , t.NombreTipo as tipodocumento,CONCAT(m.PrimerNombre," " ,m.SegundoNombre," " , m.PrimerApellido," " , m.SegundoApellido) As nombrecompleto FROM listadocursos c, beneficiarios m, tipodocumento t where c.idBenefiarios = m.idBeneficiarios AND c.idTipoDocumento = t.idTipoDocumento ');
             res.json(lista);
         });
     }
