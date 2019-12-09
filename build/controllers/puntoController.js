@@ -20,6 +20,12 @@ class PuntoController {
             res.json(punto);
         });
     }
+    list2(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const punto = yield database_1.default.query('SELECT * FROM PuntoEntrega WHERE Estado = 1');
+            res.json(punto);
+        });
+    }
     tablap(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const punto = yield database_1.default.query('SELECT p.`idPuntoEntrega`, p.`NombrePE`, p.`CodigoInternoPE`, p.`Direccion`, p.`Responsable`, p.`Estado`, p.`Telefono`, p.`CodigoExternoPE`, c.NombreCentroZonal, p.`BarrioPE`, p.`Comuna` FROM puntoentrega p , centroszonales c WHERE p.idCentrosZonales = c.idCentrosZonales');

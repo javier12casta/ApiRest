@@ -12,6 +12,7 @@ class PuntoRoutes {
     }
     config() {
         this.router.get('/', puntoController_1.default.list);
+        this.router.get('/lista', puntoController_1.default.list2);
         this.router.get('/tablap', puntoController_1.default.tablap);
         this.router.get('/:id', puntoController_1.default.getOne);
         this.router.post('/', puntoController_1.default.create);
