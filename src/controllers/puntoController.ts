@@ -9,6 +9,10 @@ class PuntoController {
         const punto = await pool.query('SELECT * FROM PuntoEntrega');
         res.json(punto);
     }
+    public async list2(req: Request, res: Response): Promise<void> {
+        const punto = await pool.query('SELECT * FROM PuntoEntrega WHERE Estado = 1');
+        res.json(punto);
+    }
 
     public async tablap(req: Request, res: Response): Promise<void> {
         const punto = await pool.query('SELECT p.`idPuntoEntrega`, p.`NombrePE`, p.`CodigoInternoPE`, p.`Direccion`, p.`Responsable`, p.`Estado`, p.`Telefono`, p.`CodigoExternoPE`, c.NombreCentroZonal, p.`BarrioPE`, p.`Comuna` FROM puntoentrega p , centroszonales c WHERE p.idCentrosZonales = c.idCentrosZonales');
