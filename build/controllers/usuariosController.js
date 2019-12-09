@@ -38,6 +38,12 @@ class UsuariosController {
             res.json(Usuarios);
         });
     }
+    tablausuariosr(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const Usuarios = yield database_1.default.query('SELECT c.idUsuarios, c.Nombres, c.Apellidos, c.Estado, c.NumeroDocumento, c.FechaIngreso, c.NombreUsuarioSistema, c.Direccion, c.TelefonoFijo, c.TelefonoFijo2, c.TelefonoMovil, c.TelefonoMovil2, c.Email, t.NombreTipo, r.RolPersona FROM usuarios c , tipodocumento t , rolpersona r WHERE c.idTipoDocumento = t.idTipoDocumento and c.TipoUsuario = r.idRolPersona ');
+            res.json(Usuarios);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

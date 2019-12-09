@@ -15,6 +15,7 @@ class UsuariosRoutes {
         this.router.get('/tablausuariosc', usuariosController_1.default.tablausuariosc);
         this.router.get('/tablausuariosp', usuariosController_1.default.tablausuariosp);
         this.router.get('/tablausuariosu', usuariosController_1.default.tablausuariosu);
+        this.router.get('/tablausuariosr', usuariosController_1.default.tablausuariosr);
         this.router.get('/:id', usuariosController_1.default.getOne);
         this.router.get('/user/:user', usuariosController_1.default.getuser);
         this.router.post('/', usuariosController_1.default.create);

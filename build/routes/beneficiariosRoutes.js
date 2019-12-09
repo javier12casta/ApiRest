@@ -12,7 +12,10 @@ class BeneficiariosRoutes {
     }
     config() {
         this.router.get('/', beneficiariosController_1.default.list);
-        this.router.get('/tablab', beneficiariosController_1.default.beneficiariosabla);
+        this.router.get('/beneficiariosc', beneficiariosController_1.default.beneficiariosablac);
+        this.router.get('/beneficiariosp', beneficiariosController_1.default.beneficiariosablap);
+        this.router.get('/beneficiariosu', beneficiariosController_1.default.beneficiariosabla);
+        this.router.get('/beneficiariosr', beneficiariosController_1.default.beneficiariosreporte);
         this.router.get('/:id', beneficiariosController_1.default.getOne);
         this.router.post('/', beneficiariosController_1.default.create);
         this.router.put('/:id', beneficiariosController_1.default.update);

@@ -14,6 +14,23 @@ class BeneficiariosController {
         res.json(beneficiario);
     }
 
+    public async beneficiariosablap(req: Request, res: Response): Promise<void> {
+        const beneficiario = await pool.query(' SELECT c.`idBeneficiarios`, c.`NumeroDocumento`,DATE_FORMAT(c.`FechaIngreso`,"%d-%m-%Y") as FechaI , DATE_FORMAT(c.`FechaNacimiento`,"%d-%m-%Y") as FechaN , c.`PrimerNombre`, c.`PrimerApellido`, c.`SegundoNombre`, c.`Direccion`, c.`Pais`, c.`Departamento`, c.`Municipio`, c.`TelefonoFijo`, c.`TelefonoFijo2`, c.`TelefonoMovil`, c.`TelefonoMovil2`, c.`Email`, c.`Estado`, c.`SegundoApellido`, c.`ServicioOmodalidad`,m.NombreGenero, t.NombreTipo, u.NombrePE FROM beneficiarios c, genero m, tipodocumento t , puntoentrega u where c.idGenero = m.idGenero and c.idTipoDocumento = t.idTipoDocumento and c.idPuntoEntrega = u.idPuntoEntrega');
+        res.json(beneficiario);
+    }
+
+    public async beneficiariosablac(req: Request, res: Response): Promise<void> {
+        const beneficiario = await pool.query('SELECT c.`idBeneficiarios`, c.`NumeroDocumento`,DATE_FORMAT(c.`FechaIngreso`,"%d-%m-%Y") as FechaI , DATE_FORMAT(c.`FechaNacimiento`,"%d-%m-%Y") as FechaN , c.`PrimerNombre`, c.`PrimerApellido`, c.`SegundoNombre`, c.`Direccion`, c.`Pais`, c.`Departamento`, c.`Municipio`, c.`TelefonoFijo`, c.`TelefonoFijo2`, c.`TelefonoMovil`, c.`TelefonoMovil2`, c.`Email`, c.`Estado`, c.`SegundoApellido`, c.`ServicioOmodalidad`,m.NombreGenero, t.NombreTipo, u.NombreCentroZonal FROM beneficiarios c, genero m, tipodocumento t , centroszonales u where c.idGenero = m.idGenero and c.idTipoDocumento = t.idTipoDocumento and c.idCentrosZonales = u.idCentrosZonales');
+        res.json(beneficiario);
+    }
+
+    public async beneficiariosreporte(req: Request, res: Response): Promise<void> {
+        const beneficiario = await pool.query('SELECT c.idBeneficiarios, c.NumeroDocumento, c.FechaIngreso, c.FechaNacimiento, c.PrimerNombre, c.PrimerApellido, c.SegundoNombre, c.Direccion, c.Pais, c.Departamento, c.Municipio, c.TelefonoFijo, c.TelefonoFijo2,c.TelefonoMovil, c.TelefonoMovil2, c.Email, c.Estado, g.NombreGenero, t.NombreTipo, c.SegundoApellido, c.ServicioOmodalidad FROM beneficiarios c , tipodocumento t , genero g where c.idTipoDocumento = t.idTipoDocumento and c.idGenero = g.idGenero ');
+        res.json(beneficiario);
+    }
+
+   
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM Beneficiarios WHERE idBeneficiarios = ?', [id]);

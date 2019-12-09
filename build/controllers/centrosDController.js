@@ -20,6 +20,24 @@ class CentrosDController {
             res.json(centro);
         });
     }
+    centrodistribucionc(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT u.idCentroDistribucion, u.NumeroExterno, u.Nombre, u.Responsable, u.Direccion, u.Barrio, u.Telefono, u.Estado, c.NombreCentroZonal FROM centrodistribucion u,centroszonales c WHERE u.idCentrosZonales = c.idCentrosZonales');
+            res.json(almacen);
+        });
+    }
+    centrodistribucionp(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT u.idCentroDistribucion, u.NumeroExterno, u.Nombre, u.Responsable, u.Direccion, u.Barrio, u.Telefono, u.Estado, p.NombrePE FROM centrodistribucion u,puntoentrega p WHERE u.idPuntoEntrega = p.idPuntoEntrega ');
+            res.json(almacen);
+        });
+    }
+    centrodistribucionu(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT u.idCentroDistribucion, u.NumeroExterno, u.Nombre, u.Responsable, u.Direccion, u.Barrio, u.Telefono, u.Estado, ud.NombreUDS FROM centrodistribucion u,uds ud WHERE u.idUDS = ud.idUDS ');
+            res.json(almacen);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

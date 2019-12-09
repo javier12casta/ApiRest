@@ -20,6 +20,30 @@ class AlmacenesController {
             res.json(almacen);
         });
     }
+    almacenesc(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT a.idAlmacenes, a.NumeroExterno, a.Nombre, a.Responsable, a.Capacidad, a.UnidadMedida, a.Estado, ce.Nombre As Nombrecentrodistribucion , a.Capacidad2,c.NombreCentroZonal FROM almacenes a , centroszonales c , centrodistribucion ce WHERE a.idCentrosZonales = c.idCentrosZonales and a.idCentroDistribucion = ce.idCentroDistribucion;');
+            res.json(almacen);
+        });
+    }
+    almacenesp(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT a.idAlmacenes, a.NumeroExterno, a.Nombre, a.Responsable, a.Capacidad, a.UnidadMedida, a.Estado, c.Nombre As Nombrecentrodistribucion, a.Capacidad2,p.NombrePE FROM almacenes a , puntoentrega p , centrodistribucion c WHERE a.idPuntoEntrega = p.idPuntoEntrega and a.idCentroDistribucion = c.idCentroDistribucion ');
+            res.json(almacen);
+        });
+    }
+    almacenesu(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT a.idAlmacenes, a.NumeroExterno, a.Nombre, a.Responsable, a.Capacidad, a.UnidadMedida, a.Estado, c.Nombre As Nombrecentrodistribucion, a.Capacidad2,u.NombreUDS FROM almacenes a , uds u , centrodistribucion c WHERE a.idUDS = u.idUDS and a.idCentroDistribucion = c.idCentroDistribucion ');
+            res.json(almacen);
+        });
+    }
+    almacenesr(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query(' SELECT c.idAlmacenes, c.NumeroExterno, c.Nombre, c.Responsable, c.Capacidad, c.UnidadMedida, c.Estado, d.Nombre AS centro, c.Capacidad2 FROM almacenes c , centrodistribucion d WHERE c.idCentroDistribucion = d.idCentroDistribucion');
+            res.json(almacen);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

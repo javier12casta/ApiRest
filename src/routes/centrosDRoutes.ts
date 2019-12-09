@@ -12,6 +12,10 @@ class centrosDRoutes {
 
     config() {
         this.router.get('/', centrosDController.list);
+        this.router.get('/centrodistribucionc', centrosDController.centrodistribucionc);
+        this.router.get('/centrodistribucionp', centrosDController.centrodistribucionp);
+        this.router.get('/centrodistribucionu', centrosDController.centrodistribucionu);
+        
         this.router.get('/:id', centrosDController.getOne);
         this.router.post('/', centrosDController.create);
         this.router.put('/:id', centrosDController.update);

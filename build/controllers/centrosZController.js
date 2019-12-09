@@ -28,7 +28,7 @@ class CentrosZController {
     }
     DuplicadosCentroZonales(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const centro = yield database_1.default.query('SELECT NombreCentroZonal , CodigoExternoCZ , CodigoExternoJcz , count(*) AS cantidadD FROM centroszonales GROUP BY NombreCentroZonal HAVING COUNT(*)>0  ');
+            const centro = yield database_1.default.query('SELECT NombreCentroZonal , CodigoExternoCZ , CodigoExternoJcz , count(*) AS cantidadD FROM centroszonales GROUP BY NombreCentroZonal HAVING COUNT(*)> 1');
             res.json(centro);
         });
     }

@@ -10,6 +10,25 @@ class CentrosDController {
         res.json(centro);
     }
 
+    public async centrodistribucionc(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT u.idCentroDistribucion, u.NumeroExterno, u.Nombre, u.Responsable, u.Direccion, u.Barrio, u.Telefono, u.Estado, c.NombreCentroZonal FROM centrodistribucion u,centroszonales c WHERE u.idCentrosZonales = c.idCentrosZonales');
+        res.json(almacen);
+    }
+
+
+    public async centrodistribucionp(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT u.idCentroDistribucion, u.NumeroExterno, u.Nombre, u.Responsable, u.Direccion, u.Barrio, u.Telefono, u.Estado, p.NombrePE FROM centrodistribucion u,puntoentrega p WHERE u.idPuntoEntrega = p.idPuntoEntrega ');
+        res.json(almacen);
+    }
+
+    public async centrodistribucionu(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT u.idCentroDistribucion, u.NumeroExterno, u.Nombre, u.Responsable, u.Direccion, u.Barrio, u.Telefono, u.Estado, ud.NombreUDS FROM centrodistribucion u,uds ud WHERE u.idUDS = ud.idUDS ');
+        res.json(almacen);
+    }
+
+    
+
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const centro = await pool.query('SELECT * FROM CentroDistribucion WHERE idCentroDistribucion = ?', [id]);

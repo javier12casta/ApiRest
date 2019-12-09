@@ -10,6 +10,28 @@ class AlmacenesController {
         res.json(almacen);
     }
 
+    public async almacenesc(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT a.idAlmacenes, a.NumeroExterno, a.Nombre, a.Responsable, a.Capacidad, a.UnidadMedida, a.Estado, ce.Nombre As Nombrecentrodistribucion , a.Capacidad2,c.NombreCentroZonal FROM almacenes a , centroszonales c , centrodistribucion ce WHERE a.idCentrosZonales = c.idCentrosZonales and a.idCentroDistribucion = ce.idCentroDistribucion;');
+        res.json(almacen);
+    }
+
+
+    public async almacenesp(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT a.idAlmacenes, a.NumeroExterno, a.Nombre, a.Responsable, a.Capacidad, a.UnidadMedida, a.Estado, c.Nombre As Nombrecentrodistribucion, a.Capacidad2,p.NombrePE FROM almacenes a , puntoentrega p , centrodistribucion c WHERE a.idPuntoEntrega = p.idPuntoEntrega and a.idCentroDistribucion = c.idCentroDistribucion ');
+        res.json(almacen);
+    }
+
+    public async almacenesu(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT a.idAlmacenes, a.NumeroExterno, a.Nombre, a.Responsable, a.Capacidad, a.UnidadMedida, a.Estado, c.Nombre As Nombrecentrodistribucion, a.Capacidad2,u.NombreUDS FROM almacenes a , uds u , centrodistribucion c WHERE a.idUDS = u.idUDS and a.idCentroDistribucion = c.idCentroDistribucion ');
+        res.json(almacen);
+    }
+
+    public async almacenesr(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query(' SELECT c.idAlmacenes, c.NumeroExterno, c.Nombre, c.Responsable, c.Capacidad, c.UnidadMedida, c.Estado, d.Nombre AS centro, c.Capacidad2 FROM almacenes c , centrodistribucion d WHERE c.idCentroDistribucion = d.idCentroDistribucion');
+        res.json(almacen);
+    }
+
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM Almacenes WHERE idAlmacenes = ?', [id]);

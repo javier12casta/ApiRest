@@ -12,6 +12,10 @@ class AlmacenesRoutes {
 
     config() {
         this.router.get('/', almacenesController.list);
+        this.router.get('/almacenesc', almacenesController.almacenesc);
+        this.router.get('/almacenesp', almacenesController.almacenesp);
+        this.router.get('/almacenesu', almacenesController.almacenesu);
+        this.router.get('/almacenesr',almacenesController.almacenesr);
         this.router.get('/:id', almacenesController.getOne);
         this.router.post('/', almacenesController.create);
         this.router.put('/:id', almacenesController.update);
