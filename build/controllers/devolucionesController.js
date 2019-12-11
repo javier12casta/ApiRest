@@ -20,6 +20,12 @@ class DevolucionesController {
             res.json(datos);
         });
     }
+    devoluciontabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const datos = yield database_1.default.query('SELECT d.iddevoluciones, d.lote, d.fechavencimiento, d.unidad, d.fecharegistro, r.Referencia, c.Nombre AS centrodistribucionorigen, c.Nombre AS centrodistribuciondestino, a.Nombre AS Nombrealmacen FROM devoluciones d , referenciabienestarina r , centrodistribucion c , almacenes a WHERE d.idTipoBienesterina = r.idTipoBienesterina and d.idCentroDistribucionOrigen = c.idCentroDistribucion and d.idCentroDistribucionDestino = c.idCentroDistribucion and d.idAlmacenes = a.idAlmacenes ');
+            res.json(datos);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

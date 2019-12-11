@@ -12,6 +12,7 @@ class DevolucionesRoutes {
 
     config() {
         this.router.get('/', devolucionesController.list);
+        this.router.get('/tabla', devolucionesController.devoluciontabla);
         this.router.get('/:id', devolucionesController.getOne);
         this.router.post('/', devolucionesController.create);
         this.router.put('/:id', devolucionesController.update);
