@@ -11,7 +11,17 @@ class ListaCController {
     }
 
     public async tablac(req: Request, res: Response): Promise<void> {
-        const lista = await pool.query('SELECT c.idListadoCursos , c.NombreAgenteE , c.NumeroDocumento ,DATE_FORMAT(c.Fecha,"%d-%m-%Y") as Fecha ,c.Estado , t.NombreTipo as tipodocumento,CONCAT(m.PrimerNombre," " ,m.SegundoNombre," " , m.PrimerApellido," " , m.SegundoApellido) As nombrecompleto FROM listadocursos c, beneficiarios m, tipodocumento t where c.idBenefiarios = m.idBeneficiarios AND c.idTipoDocumento = t.idTipoDocumento ');
+        const lista = await pool.query('SELECT c.idListadoCursos , c.NombreAgenteE , c.NumeroDocumento ,DATE_FORMAT(c.Fecha,"%d-%m-%Y") as Fecha ,c.Estado , t.NombreTipo as tipodocumento,CONCAT(m.PrimerNombre," " ,m.SegundoNombre," " , m.PrimerApellido," " , m.SegundoApellido) As nombrecompleto , ce.NombreCentroZonal FROM listadocursos c, beneficiarios m, tipodocumento t , centroszonales ce where c.idBenefiarios = m.idBeneficiarios AND c.idTipoDocumento = t.idTipoDocumento and c.idCentrosZonales = ce.idCentrosZonales ');
+        res.json(lista);
+    }  
+
+    public async tablap(req: Request, res: Response): Promise<void> {
+        const lista = await pool.query('SELECT c.idListadoCursos , c.NombreAgenteE , c.NumeroDocumento ,DATE_FORMAT(c.Fecha,"%d-%m-%Y") as Fecha ,c.Estado , t.NombreTipo as tipodocumento,CONCAT(m.PrimerNombre," " ,m.SegundoNombre," " , m.PrimerApellido," " , m.SegundoApellido) As nombrecompleto , pe.NombrePE FROM listadocursos c, beneficiarios m, tipodocumento t , puntoentrega pe where c.idBenefiarios = m.idBeneficiarios AND c.idTipoDocumento = t.idTipoDocumento and c.idPuntoEntrega = pe.idPuntoEntrega');
+        res.json(lista);
+    }  
+
+    public async tablau(req: Request, res: Response): Promise<void> {
+        const lista = await pool.query('SELECT c.idListadoCursos , c.NombreAgenteE , c.NumeroDocumento ,DATE_FORMAT(c.Fecha,"%d-%m-%Y") as Fecha ,c.Estado , t.NombreTipo as tipodocumento,CONCAT(m.PrimerNombre," " ,m.SegundoNombre," " , m.PrimerApellido," " , m.SegundoApellido) As nombrecompleto , u.NombreUDS FROM listadocursos c, beneficiarios m, tipodocumento t , uds u where c.idBenefiarios = m.idBeneficiarios AND c.idTipoDocumento = t.idTipoDocumento and c.idUDS = u.idUDS');
         res.json(lista);
     }  
 

@@ -12,6 +12,9 @@ class DatosRoutes {
 
     config() {
         this.router.get('/', datosController.list);
+        this.router.get('/tablac', datosController.tablac);
+        this.router.get('/tablap', datosController.tablap);
+        this.router.get('/tablau', datosController.tablau);
         this.router.get('/:id', datosController.getOne);
         this.router.post('/', datosController.create);
         this.router.put('/:id', datosController.update);

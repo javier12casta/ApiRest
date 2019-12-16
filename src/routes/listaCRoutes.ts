@@ -13,6 +13,8 @@ class ListaCRoutes {
     config() {
         this.router.get('/', listaCController.list);
         this.router.get('/tablac', listaCController.tablac);
+        this.router.get('/tablap', listaCController.tablap);
+        this.router.get('/tablau', listaCController.tablau);
         this.router.get('/:id', listaCController.getOne);
         this.router.post('/', listaCController.create);
         this.router.put('/:id', listaCController.update);
