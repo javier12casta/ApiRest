@@ -47,7 +47,7 @@ class UsuariosController {
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const games = yield database_1.default.query('SELECT * FROM Usuarios WHERE idUsuarios = ?', [id]);
+            const games = yield database_1.default.query('SELECT *, DATE_FORMAT(FechaIngreso,"%Y-%m-%d")AS FechaIngreso FROM Usuarios WHERE idUsuarios = ?', [id]);
             console.log(games.length);
             if (games.length > 0) {
                 return res.json(games[0]);

@@ -12,6 +12,7 @@ class BeneficiariosRoutes {
     }
     config() {
         this.router.get('/', beneficiariosController_1.default.list);
+        this.router.get('/id', beneficiariosController_1.default.id);
         this.router.get('/beneficiariosc', beneficiariosController_1.default.beneficiariosablac);
         this.router.get('/beneficiariosp', beneficiariosController_1.default.beneficiariosablap);
         this.router.get('/beneficiariosu', beneficiariosController_1.default.beneficiariosabla);

@@ -32,7 +32,7 @@ class UsuariosController {
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        const games = await pool.query('SELECT * FROM Usuarios WHERE idUsuarios = ?', [id]);
+        const games = await pool.query('SELECT *, DATE_FORMAT(FechaIngreso,"%Y-%m-%d")AS FechaIngreso FROM Usuarios WHERE idUsuarios = ?', [id]);
         console.log(games.length);
         if (games.length > 0) {
             return res.json(games[0]);
