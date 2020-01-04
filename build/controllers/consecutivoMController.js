@@ -122,6 +122,12 @@ class ConsecutivoMController {
             res.json(consecutivo);
         });
     }
+    actualizartabla18(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const consecutivo = yield database_1.default.query('UPDATE consecutivosmaestro SET Desde= (SELECT MIN(idAlmacenes)from almacenes ),Hasta=(SELECT MAX(idAlmacenes) from almacenes) WHERE idConsecutivosMaestro = 18;');
+            res.json(consecutivo);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

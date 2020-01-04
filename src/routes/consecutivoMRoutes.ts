@@ -30,7 +30,7 @@ class ConsecutivoMRoutes {
         this.router.get('/tabla15', consecutivoMController.actualizartabla15);
         this.router.get('/tabla16', consecutivoMController.actualizartabla16);
         this.router.get('/tabla17', consecutivoMController.actualizartabla17);
-
+        this.router.get('/tabla18', consecutivoMController.actualizartabla18);
         this.router.get('/:id', consecutivoMController.getOne);
         this.router.post('/', consecutivoMController.create);
         this.router.put('/:id', consecutivoMController.update);
