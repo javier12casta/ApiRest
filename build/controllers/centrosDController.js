@@ -38,6 +38,24 @@ class CentrosDController {
             res.json(almacen);
         });
     }
+    centrodxcentro(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT cen.idCentroDistribucion , cen.Nombre FROM centrodistribucion cen , centroszonales c WHERE cen.idCentrosZonales = c.idCentrosZonales');
+            res.json(almacen);
+        });
+    }
+    centrodxpunto(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT cen.idCentroDistribucion ,  cen.Nombre FROM centrodistribucion cen , puntoentrega p WHERE cen.idPuntoEntrega = p.idPuntoEntrega');
+            res.json(almacen);
+        });
+    }
+    centrodxuds(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const almacen = yield database_1.default.query('SELECT cen.idCentroDistribucion ,  cen.Nombre FROM centrodistribucion cen , uds u WHERE cen.idUDS = u.idUDS');
+            res.json(almacen);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
