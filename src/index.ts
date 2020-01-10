@@ -41,6 +41,7 @@ import entregacoRoutes from './routes/entregacoRoutes';
 import recuentoRoutes from './routes/recuentoRoutes';
 import trasladosRoutes from './routes/trasladosRoutes';
 import actaRoutes from './routes/actaRoutes';
+import cuposRoutes from './routes/cuposRoutes';
 
 class Server {
 
@@ -108,7 +109,7 @@ class Server {
         this.app.use('/recuento', recuentoRoutes);
         this.app.use('/traslados', trasladosRoutes);
         this.app.use('/Acta', actaRoutes);
-
+        this.app.use('/cupos', cuposRoutes);
     }
 
     start() {
