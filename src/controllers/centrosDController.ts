@@ -26,6 +26,21 @@ class CentrosDController {
         res.json(almacen);
     }
 
+
+    public async centrodxcentro(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT cen.idCentroDistribucion , cen.Nombre FROM centrodistribucion cen , centroszonales c WHERE cen.idCentrosZonales = c.idCentrosZonales');
+        res.json(almacen);
+    }
+
+    public async centrodxpunto(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT cen.idCentroDistribucion ,  cen.Nombre FROM centrodistribucion cen , puntoentrega p WHERE cen.idPuntoEntrega = p.idPuntoEntrega');
+        res.json(almacen);
+    }
+
+    public async centrodxuds(req: Request, res: Response): Promise<void> {
+        const almacen = await pool.query('SELECT cen.idCentroDistribucion ,  cen.Nombre FROM centrodistribucion cen , uds u WHERE cen.idUDS = u.idUDS');
+        res.json(almacen);
+    }
     
 
 

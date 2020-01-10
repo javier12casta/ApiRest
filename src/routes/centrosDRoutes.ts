@@ -16,6 +16,13 @@ class centrosDRoutes {
         this.router.get('/centrodistribucionp', centrosDController.centrodistribucionp);
         this.router.get('/centrodistribucionu', centrosDController.centrodistribucionu);
         
+
+        this.router.get('/centrodistribucionxcentro',centrosDController.centrodxcentro);
+
+        this.router.get('/centrodistribucionxpunto',centrosDController.centrodxpunto);
+
+        this.router.get('/centrodistribucionxuds',centrosDController.centrodxuds);
+
         this.router.get('/:id', centrosDController.getOne);
         this.router.post('/', centrosDController.create);
         this.router.put('/:id', centrosDController.update);

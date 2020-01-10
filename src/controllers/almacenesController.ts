@@ -32,6 +32,10 @@ class AlmacenesController {
     }
 
 
+  
+
+
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM Almacenes WHERE idAlmacenes = ?', [id]);
