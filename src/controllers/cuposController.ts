@@ -11,24 +11,24 @@ class CuposController {
     }
 
     public async tablac(req: Request, res: Response): Promise<void> {
-        const datos = await pool.query('SELECT d.idDatosVarios, d.CodigoInterno, d.EstadoDatoMaestro, d.DescripcionDelRegistro, d.Valor, d.UnidadDeMedida, d.idDatosMaestros, c.NombreCentroZonal FROM numerocupos d , centroszonales c WHERE d.idCentrosZonales = c.idCentrosZonales ');
+        const datos = await pool.query('SELECT d.idnumerocupos, d.CodigoInterno, d.EstadoDatoMaestro, d.DescripcionDelRegistro, d.Valor, d.UnidadDeMedida, d.idDatosMaestros, c.NombreCentroZonal FROM numerocupos d , centroszonales c WHERE d.idCentrosZonales = c.idCentrosZonales ');
         res.json(datos);
     }
 
 
     public async tablap(req: Request, res: Response): Promise<void> {
-        const datos = await pool.query('SELECT d.idDatosVarios, d.CodigoInterno, d.EstadoDatoMaestro, d.DescripcionDelRegistro, d.Valor, d.UnidadDeMedida, d.idDatosMaestros, p.NombrePE FROM numerocupos d , puntoentrega p WHERE d.idPuntoEntrega = p.idPuntoEntrega');
+        const datos = await pool.query('SELECT d.idnumerocupos, d.CodigoInterno, d.EstadoDatoMaestro, d.DescripcionDelRegistro, d.Valor, d.UnidadDeMedida, d.idDatosMaestros, p.NombrePE FROM numerocupos d , puntoentrega p WHERE d.idPuntoEntrega = p.idPuntoEntrega ');
         res.json(datos);
     }
 
     public async tablau(req: Request, res: Response): Promise<void> {
-        const datos = await pool.query('SELECT d.idDatosVarios, d.CodigoInterno, d.EstadoDatoMaestro, d.DescripcionDelRegistro, d.Valor, d.UnidadDeMedida, d.idDatosMaestros, u.NombreUDS FROM datosvarios d ,uds u WHERE d.idUDS = u.idUDS');
+        const datos = await pool.query('SELECT d.idnumerocupos, d.CodigoInterno, d.EstadoDatoMaestro, d.DescripcionDelRegistro, d.Valor, d.UnidadDeMedida, d.idDatosMaestros, u.NombreUDS FROM numerocupos d ,uds u WHERE d.idUDS = u.idUDS ');
         res.json(datos);
     }
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        const games = await pool.query('SELECT * FROM numerocupos WHERE idDatosVarios = ?', [id]);
+        const games = await pool.query('SELECT * FROM numerocupos WHERE idnumerocupos = ?', [id]);
         console.log(games.length);
         if (games.length > 0) {
             return res.json(games[0]);
@@ -44,13 +44,13 @@ class CuposController {
     public async update(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
         const oldGame = req.body;
-        await pool.query('UPDATE numerocupos set ? WHERE idDatosVarios = ?', [req.body, id]);
+        await pool.query('UPDATE numerocupos set ? WHERE idnumerocupos = ?', [req.body, id]);
         res.json({ message: "The numero cupos was Updated" });
     }
 
     public async delete(req: Request, res: Response): Promise<void> {
         const { id } = req.params;
-        await pool.query('DELETE FROM numerocupos WHERE idDatosVarios = ?', [id]);
+        await pool.query('DELETE FROM numerocupos WHERE idnumerocupos = ?', [id]);
         res.json({ message: "The Numero cupos DatosVarios was deleted" });
     }
 }
