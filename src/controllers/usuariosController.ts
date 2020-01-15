@@ -26,7 +26,7 @@ class UsuariosController {
     }
 
     public async tablausuariosr(req: Request, res: Response): Promise<void> {
-        const Usuarios = await pool.query('SELECT c.idUsuarios, c.Nombres, c.Apellidos, c.Estado, c.NumeroDocumento, c.FechaIngreso, c.NombreUsuarioSistema, c.Direccion, c.TelefonoFijo, c.TelefonoFijo2, c.TelefonoMovil, c.TelefonoMovil2, c.Email, t.NombreTipo, r.RolPersona FROM usuarios c , tipodocumento t , rolpersona r WHERE c.idTipoDocumento = t.idTipoDocumento and c.TipoUsuario = r.idRolPersona ');
+        const Usuarios = await pool.query('SELECT c.idUsuarios, c.Nombres, c.Apellidos, c.Estado, c.NumeroDocumento, DATE_FORMAT(c.FechaIngreso,"%Y-%m-%d")AS FechaIngreso, c.NombreUsuarioSistema, c.Direccion, c.TelefonoFijo, c.TelefonoFijo2, c.TelefonoMovil, c.TelefonoMovil2, c.Email, t.NombreTipo, r.RolPersona FROM usuarios c , tipodocumento t , rolpersona r WHERE c.idTipoDocumento = t.idTipoDocumento and c.TipoUsuario = r.idRolPersona ');
         res.json(Usuarios);
     }
 

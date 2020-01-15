@@ -98,6 +98,11 @@ class ConsecutivoMController {
         res.json(consecutivo);
     }
 
+    public async actualizartabla19(req: Request, res: Response): Promise<void> {
+        const consecutivo = await pool.query('UPDATE consecutivosmaestro SET Desde= (SELECT MIN(idnumerocupos)from numerocupos ),Hasta=(SELECT MAX(idnumerocupos) from numerocupos) WHERE idConsecutivosMaestro = 19;');
+        res.json(consecutivo);
+    }
+
 
 
 
