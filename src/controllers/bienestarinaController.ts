@@ -10,6 +10,11 @@ class BienestarinaController {
         res.json(bienestarina);
     }
 
+    public async Maxid(req: Request, res: Response): Promise<void> {
+        const bienestarina = await pool.query('SELECT MAX(idBienestarina + 1) AS idBienestarina FROM bienestarina');
+        res.json(bienestarina);
+    }
+
     public async tabla(req: Request, res: Response): Promise<void> {
         const bienestarina = await pool.query('SELECT b.idBienestarina,b.lote,DATE_FORMAT(b.FechaVencimiento,"%d-%m-%Y") as FechaVencimiento,b.Cantidad,b.UnidadPrincipal,DATE_FORMAT(b.FechaRecepcion,"%d-%m-%Y") as FechaRecepcion,r.TipoBienesterina,c.Nombre as centrodistribucion,i.Nombre as inventario,a.Nombre as almacenes FROM bienestarina b, referenciabienestarina r, centrodistribucion c, inventario i, almacenes a WHERE b.idTipoBienesterina = r.idTipoBienesterina AND b.idCentroDistribucion = c.idCentroDistribucion AND b.idInventario = i.idInventario AND b.idAlmacenes = a.idAlmacenes');
         res.json(bienestarina);
