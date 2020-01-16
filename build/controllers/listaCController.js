@@ -41,7 +41,7 @@ class ListaCController {
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
-            const games = yield database_1.default.query('SELECT * FROM ListadoCursos WHERE idListadoCursos = ?', [id]);
+            const games = yield database_1.default.query('SELECT idListadoCursos, NombreAgenteE, NumeroDocumento, DATE_FORMAT(Fecha,"%Y-%m-%d") as Fecha, Estado, idTipoDocumento, idConsecutivosMaestro, idBenefiarios, idUDS, idCentrosZonales, idPuntoEntrega FROM listadocursos WHERE idListadoCursos = ?', [id]);
             console.log(games.length);
             if (games.length > 0) {
                 return res.json(games[0]);

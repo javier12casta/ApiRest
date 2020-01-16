@@ -28,7 +28,7 @@ class ListaCController {
 
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
-        const games = await pool.query('SELECT * FROM ListadoCursos WHERE idListadoCursos = ?', [id]);
+        const games = await pool.query('SELECT idListadoCursos, NombreAgenteE, NumeroDocumento, DATE_FORMAT(Fecha,"%Y-%m-%d") as Fecha, Estado, idTipoDocumento, idConsecutivosMaestro, idBenefiarios, idUDS, idCentrosZonales, idPuntoEntrega FROM listadocursos WHERE idListadoCursos = ?', [id]);
         console.log(games.length);
         if (games.length > 0) {
             return res.json(games[0]);
