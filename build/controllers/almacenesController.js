@@ -44,6 +44,13 @@ class AlmacenesController {
             res.json(almacen);
         });
     }
+    filtrodia(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { resp } = req.body;
+            const almacen = yield database_1.default.query(' SELECT c.idAlmacenes, c.NumeroExterno, c.Nombre, c.Responsable, c.Capacidad, c.Estado, d.Nombre AS centro, c.Capacidad2 FROM almacenes c , centrodistribucion d WHERE c.idCentroDistribucion = d.idCentroDistribucion and c.Responsable like "%s%"', [resp]);
+            res.json(almacen);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

@@ -31,6 +31,12 @@ class AlmacenesController {
         res.json(almacen);
     }
 
+    public async filtrodia(req: Request, res: Response): Promise<void> {
+        const {resp} = req.body;
+        const almacen = await pool.query(' SELECT c.idAlmacenes, c.NumeroExterno, c.Nombre, c.Responsable, c.Capacidad, c.Estado, d.Nombre AS centro, c.Capacidad2 FROM almacenes c , centrodistribucion d WHERE c.idCentroDistribucion = d.idCentroDistribucion and c.Responsable like "%s%"' , [resp]);
+        res.json(almacen);
+    }
+
 
   
 

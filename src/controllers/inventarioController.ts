@@ -47,6 +47,14 @@ class InventarioController {
         await pool.query('DELETE FROM Inventario WHERE idInventario = ?', [id]);
         res.json({ message: "The Inventario was deleted" });
     }
+
+
+
+    public async tabla(req: Request, res: Response): Promise<void> {
+        const inv = await pool.query('SELECT  Cantidad, Cantidad2 FROM inventario');
+        res.json(inv);
+    }
+
 }
 
 const inventarioController = new InventarioController;

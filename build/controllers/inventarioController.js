@@ -63,6 +63,12 @@ class InventarioController {
             res.json({ message: "The Inventario was deleted" });
         });
     }
+    tabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const inv = yield database_1.default.query('SELECT  Cantidad, Cantidad2 FROM inventario');
+            res.json(inv);
+        });
+    }
 }
 const inventarioController = new InventarioController;
 exports.default = inventarioController;
