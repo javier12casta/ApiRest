@@ -12,6 +12,7 @@ class BiometricoRoutes {
     }
     config() {
         this.router.get('/', biometricoController_1.default.list);
+        this.router.post('/', biometricoController_1.default.create);
     }
 }
 exports.default = new BiometricoRoutes().router;

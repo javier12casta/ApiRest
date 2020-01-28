@@ -53,62 +53,62 @@ class Server {
         this.routes();
     }
     config() {
-        this.app.set('port', process.env.PORT || 3000);
-        this.app.use(morgan_1.default('dev'));
+        this.app.set("port", process.env.PORT || 3000);
+        this.app.use(morgan_1.default("dev"));
         this.app.use(cors_1.default());
         this.app.use(express_1.default.json());
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
-    //Global  variables 
+    //Global  variables
     global() {
         this.app.use((res, req, next) => {
             next();
         });
     }
     routes() {
-        this.app.use('/', indexRoutes_1.default);
-        this.app.use('/genero', generoRoutes_1.default);
-        this.app.use('/acudiente', acudientesRoutes_1.default);
-        this.app.use('/almacen', almacenesRoutes_1.default);
-        this.app.use('/barrio', barriosRoutes_1.default);
-        this.app.use('/beneficiario', beneficiariosRoutes_1.default);
-        this.app.use('/bienestarina', bienestarinaRoutes_1.default);
-        this.app.use('/centrosD', centrosDRoutes_1.default);
-        this.app.use('/centrosZ', centrosZRoutes_1.default);
-        this.app.use('/comuna', comunasRoutes_1.default);
-        this.app.use('/consecutivoI', consecutivoIRoutes_1.default);
-        this.app.use('/consecutivoM', consecutivoMRoutes_1.default);
-        this.app.use('/datos', datosRoutes_1.default);
-        this.app.use('/entrega', entregaRoutes_1.default);
-        this.app.use('/inventario', inventarioRoutes_1.default);
-        this.app.use('/listaC', listaCRoutes_1.default);
-        this.app.use('/listaP', listaPRoutes_1.default);
-        this.app.use('/listaM', listaMRoutes_1.default);
-        this.app.use('/municipio', municipioRoutes_1.default);
-        this.app.use('/permisos', permisosRoutes_1.default);
-        this.app.use('/personal', personalRoutes_1.default);
-        this.app.use('/punto', puntoRoutes_1.default);
-        this.app.use('/regional', regionalRoutes_1.default);
-        this.app.use('/reporte', reportesRoutes_1.default);
-        this.app.use('/rol', rolRoutes_1.default);
-        this.app.use('/tbienestarina', tbienestarinaRoutes_1.default);
-        this.app.use('/tdocumento', tdocumentoRoutes_1.default);
-        this.app.use('/uds', udsRoutes_1.default);
-        this.app.use('/unidad', unidadRoutes_1.default);
-        this.app.use('/usuario', usuariosRoutes_1.default);
-        this.app.use('/biometrico', biometricoRoutes_1.default);
-        this.app.use('/devoluciones', devolucionesRoutes_1.default);
-        this.app.use('/entregabeneficiario', entregabeRoutes_1.default);
-        this.app.use('/entregacentrod', entregacendRoutes_1.default);
-        this.app.use('/entregaconsumo', entregacoRoutes_1.default);
-        this.app.use('/recuento', recuentoRoutes_1.default);
-        this.app.use('/traslados', trasladosRoutes_1.default);
-        this.app.use('/Acta', actaRoutes_1.default);
-        this.app.use('/cupos', cuposRoutes_1.default);
+        this.app.use("/", indexRoutes_1.default);
+        this.app.use("/genero", generoRoutes_1.default);
+        this.app.use("/acudiente", acudientesRoutes_1.default);
+        this.app.use("/almacen", almacenesRoutes_1.default);
+        this.app.use("/barrio", barriosRoutes_1.default);
+        this.app.use("/beneficiario", beneficiariosRoutes_1.default);
+        this.app.use("/bienestarina", bienestarinaRoutes_1.default);
+        this.app.use("/centrosD", centrosDRoutes_1.default);
+        this.app.use("/centrosZ", centrosZRoutes_1.default);
+        this.app.use("/comuna", comunasRoutes_1.default);
+        this.app.use("/consecutivoI", consecutivoIRoutes_1.default);
+        this.app.use("/consecutivoM", consecutivoMRoutes_1.default);
+        this.app.use("/datos", datosRoutes_1.default);
+        this.app.use("/entrega", entregaRoutes_1.default);
+        this.app.use("/inventario", inventarioRoutes_1.default);
+        this.app.use("/listaC", listaCRoutes_1.default);
+        this.app.use("/listaP", listaPRoutes_1.default);
+        this.app.use("/listaM", listaMRoutes_1.default);
+        this.app.use("/municipio", municipioRoutes_1.default);
+        this.app.use("/permisos", permisosRoutes_1.default);
+        this.app.use("/personal", personalRoutes_1.default);
+        this.app.use("/punto", puntoRoutes_1.default);
+        this.app.use("/regional", regionalRoutes_1.default);
+        this.app.use("/reporte", reportesRoutes_1.default);
+        this.app.use("/rol", rolRoutes_1.default);
+        this.app.use("/tbienestarina", tbienestarinaRoutes_1.default);
+        this.app.use("/tdocumento", tdocumentoRoutes_1.default);
+        this.app.use("/uds", udsRoutes_1.default);
+        this.app.use("/unidad", unidadRoutes_1.default);
+        this.app.use("/usuario", usuariosRoutes_1.default);
+        this.app.use("/biometrico", biometricoRoutes_1.default);
+        this.app.use("/devoluciones", devolucionesRoutes_1.default);
+        this.app.use("/entregabeneficiario", entregabeRoutes_1.default);
+        this.app.use("/entregacentrod", entregacendRoutes_1.default);
+        this.app.use("/entregaconsumo", entregacoRoutes_1.default);
+        this.app.use("/recuento", recuentoRoutes_1.default);
+        this.app.use("/traslados", trasladosRoutes_1.default);
+        this.app.use("/Acta", actaRoutes_1.default);
+        this.app.use("/cupos", cuposRoutes_1.default);
     }
     start() {
-        this.app.listen(this.app.get('port'), () => {
-            console.log('Server on port', this.app.get('port'));
+        this.app.listen(this.app.get("port"), () => {
+            console.log("Server on port", this.app.get("port"));
         });
     }
 }
