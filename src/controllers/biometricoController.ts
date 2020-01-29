@@ -9,13 +9,23 @@ class BiometricoController {
 
   public async create(req: Request, res: Response): Promise<void> {
     // const result = await pool.query('INSERT INTO CentroDistribucion set ?', [req.body]);
-    if (typeof localStorage === "undefined" || localStorage === null) {
+    /*     if (typeof localStorage === "undefined" || localStorage === null) {
       var LocalStorage = require("node-localstorage").LocalStorage;
-      localStorage = new LocalStorage("./localhost:4200");
+      localStorage = new LocalStorage("http://localhost:3000");
     }
     localStorage.setItem("myFirstKey", "myFirstValue");
-    console.log(localStorage.getItem("myFirstKey"));
+    console.log(localStorage.getItem("myFirstKey")); */
+    sessionStorage.setItem('dogName', 'Fluffy');
+    sessionStorage.getItem('dogName');
 
+    function saveData() {
+      if (typeof Storage !== "undefined") {
+        localStorage.setItem("name", "Shahid");
+        localStorage.setItem("city", "Mumbai");
+        localStorage.setItem("country", "India");
+      }
+    }
+    saveData();
     res.json(req.body);
   }
 }

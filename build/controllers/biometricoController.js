@@ -23,12 +23,22 @@ class BiometricoController {
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             // const result = await pool.query('INSERT INTO CentroDistribucion set ?', [req.body]);
-            if (typeof localStorage === "undefined" || localStorage === null) {
-                var LocalStorage = require("node-localstorage").LocalStorage;
-                localStorage = new LocalStorage("./localhost:4200");
+            /*     if (typeof localStorage === "undefined" || localStorage === null) {
+              var LocalStorage = require("node-localstorage").LocalStorage;
+              localStorage = new LocalStorage("http://localhost:3000");
             }
             localStorage.setItem("myFirstKey", "myFirstValue");
-            console.log(localStorage.getItem("myFirstKey"));
+            console.log(localStorage.getItem("myFirstKey")); */
+            sessionStorage.setItem('dogName', 'Fluffy');
+            sessionStorage.getItem('dogName');
+            function saveData() {
+                if (typeof Storage !== "undefined") {
+                    localStorage.setItem("name", "Shahid");
+                    localStorage.setItem("city", "Mumbai");
+                    localStorage.setItem("country", "India");
+                }
+            }
+            saveData();
             res.json(req.body);
         });
     }
