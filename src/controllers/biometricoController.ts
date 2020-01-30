@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
 import pool from "../database";
 var custom = {
+  id:'',
   Nombre: '',
   };
 
 class BiometricoController {
-  val: string | undefined;
 
   public async list(req: Request, res: Response): Promise<void> {
     const biometrico = await pool.query("SELECT Huella FROM uibiometrico");
