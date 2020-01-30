@@ -1,32 +1,24 @@
 import { Request, Response } from "express";
 import pool from "../database";
+var custom = {
+  Nombre: '',
+  };
 
 class BiometricoController {
+  val: string | undefined;
+
   public async list(req: Request, res: Response): Promise<void> {
     const biometrico = await pool.query("SELECT Huella FROM uibiometrico");
     res.json(biometrico);
   }
-
   public async create(req: Request, res: Response): Promise<void> {
-    // const result = await pool.query('INSERT INTO CentroDistribucion set ?', [req.body]);
-    /*     if (typeof localStorage === "undefined" || localStorage === null) {
-      var LocalStorage = require("node-localstorage").LocalStorage;
-      localStorage = new LocalStorage("http://localhost:3000");
-    }
-    localStorage.setItem("myFirstKey", "myFirstValue");
-    console.log(localStorage.getItem("myFirstKey")); */
-    sessionStorage.setItem('dogName', 'Fluffy');
-    sessionStorage.getItem('dogName');
-
-    function saveData() {
-      if (typeof Storage !== "undefined") {
-        localStorage.setItem("name", "Shahid");
-        localStorage.setItem("city", "Mumbai");
-        localStorage.setItem("country", "India");
-      }
-    }
-    saveData();
-    res.json(req.body);
+    var valbio = req.body;
+    custom = valbio;
+    res.json(valbio);
+  }
+  
+  public async valid(req: Request, res: Response): Promise<void> {
+    res.json(custom);
   }
 }
 
