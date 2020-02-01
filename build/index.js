@@ -46,6 +46,7 @@ const recuentoRoutes_1 = __importDefault(require("./routes/recuentoRoutes"));
 const trasladosRoutes_1 = __importDefault(require("./routes/trasladosRoutes"));
 const actaRoutes_1 = __importDefault(require("./routes/actaRoutes"));
 const cuposRoutes_1 = __importDefault(require("./routes/cuposRoutes"));
+const cargainventarioRoutes_1 = __importDefault(require("./routes/cargainventarioRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -105,6 +106,7 @@ class Server {
         this.app.use('/traslados', trasladosRoutes_1.default);
         this.app.use('/Acta', actaRoutes_1.default);
         this.app.use('/cupos', cuposRoutes_1.default);
+        this.app.use('/cargainv', cargainventarioRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
