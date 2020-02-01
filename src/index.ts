@@ -69,16 +69,38 @@ class Server {
     });
   }
 
-        this.app.use('/devoluciones', devolucionesRoutes);
-        this.app.use('/entregabeneficiario', entregabeRoutes);
-        this.app.use('/entregacentrod', entregacendRoutes);
-        this.app.use('/entregaconsumo', entregacoRoutes);
-        this.app.use('/recuento', recuentoRoutes);
-        this.app.use('/traslados', trasladosRoutes);
-        this.app.use('/Acta', actaRoutes);
-        this.app.use('/cupos', cuposRoutes);
-        this.app.use('/cargainv', cargainventarioRoutes);
-    }
+  routes(): void {
+    this.app.use("/", indexRoutes);
+    this.app.use("/genero", generoRoutes);
+    this.app.use("/acudiente", acudientesRoutes);
+    this.app.use("/almacen", almacenesRoutes);
+    this.app.use("/barrio", barriosRoutes);
+    this.app.use("/beneficiario", beneficiariosRoutes);
+    this.app.use("/bienestarina", bienestarinaRoutes);
+    this.app.use("/centrosD", centrosDRoutes);
+    this.app.use("/centrosZ", centrosZRoutes);
+    this.app.use("/comuna", comunasRoutes);
+    this.app.use("/consecutivoI", consecutivoIRoutes);
+    this.app.use("/consecutivoM", consecutivoMRoutes);
+    this.app.use("/datos", datosRoutes);
+    this.app.use("/entrega", entregaRoutes);
+    this.app.use("/inventario", inventarioRoutes);
+    this.app.use("/listaC", listaCRoutes);
+    this.app.use("/listaP", listaPRoutes);
+    this.app.use("/listaM", listaMRoutes);
+    this.app.use("/municipio", municipioRoutes);
+    this.app.use("/permisos", permisosRoutes);
+    this.app.use("/personal", personalRoutes);
+    this.app.use("/punto", puntoRoutes);
+    this.app.use("/regional", regionalRoutes);
+    this.app.use("/reporte", reportesRoutes);
+    this.app.use("/rol", rolRoutes);
+    this.app.use("/tbienestarina", tbienestarinaRoutes);
+    this.app.use("/tdocumento", tdocumentoRoutes);
+    this.app.use("/uds", udsRoutes);
+    this.app.use("/unidad", unidadRoutes);
+    this.app.use("/usuario", usuariosRoutes);
+    this.app.use("/biometrico", biometricoRoutes);
 
     this.app.use("/devoluciones", devolucionesRoutes);
     this.app.use("/entregabeneficiario", entregabeRoutes);
@@ -88,6 +110,7 @@ class Server {
     this.app.use("/traslados", trasladosRoutes);
     this.app.use("/Acta", actaRoutes);
     this.app.use("/cupos", cuposRoutes);
+    this.app.use('/cargainv', cargainventarioRoutes);
     
   }
 
