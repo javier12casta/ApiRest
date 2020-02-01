@@ -12,6 +12,8 @@ class BiometricoRoutes {
 
     config() {
         this.router.get('/', biometricoController.list);
+        this.router.get('/val', biometricoController.valid);
+        this.router.post('/', biometricoController.create);
     }
 
 }

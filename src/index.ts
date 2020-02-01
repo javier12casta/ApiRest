@@ -1,6 +1,6 @@
-import express, { Application } from 'express';
-import morgan from 'morgan';
-import cors from 'cors';
+import express, { Application } from "express";
+import morgan from "morgan";
+import cors from "cors";
 
 //Import Routs
 import indexRoutes from './routes/indexRoutes';
@@ -45,63 +45,29 @@ import cuposRoutes from './routes/cuposRoutes';
 import cargainventarioRoutes from './routes/cargainventarioRoutes';
 
 class Server {
+  public app: Application;
 
-    public app: Application;
-    
-    constructor() {
-        this.app = express();
-        this.config();
-        this.routes();
-    }
+  constructor() {
+    this.app = express();
+    this.config();
+    this.routes();
+  }
 
-    config(): void {
-        this.app.set('port', process.env.PORT || 3000);
+  config(): void {
+    this.app.set("port", process.env.PORT || 3000);
 
-        this.app.use(morgan('dev'));
-        this.app.use(cors());
-        this.app.use(express.json());
-        this.app.use(express.urlencoded({extended: false}));
-    }
+    this.app.use(morgan("dev"));
+    this.app.use(cors());
+    this.app.use(express.json());
+    this.app.use(express.urlencoded({ extended: false }));
+  }
 
-    //Global  variables 
-    global():void {
-        this.app.use((res,req,next)=>{
-            next();
-        });
-    }
-
-    routes(): void {
-        this.app.use('/', indexRoutes);
-        this.app.use('/genero', generoRoutes);
-        this.app.use('/acudiente', acudientesRoutes);
-        this.app.use('/almacen', almacenesRoutes);
-        this.app.use('/barrio', barriosRoutes);
-        this.app.use('/beneficiario', beneficiariosRoutes);
-        this.app.use('/bienestarina', bienestarinaRoutes);
-        this.app.use('/centrosD', centrosDRoutes);
-        this.app.use('/centrosZ', centrosZRoutes);
-        this.app.use('/comuna', comunasRoutes);
-        this.app.use('/consecutivoI', consecutivoIRoutes);
-        this.app.use('/consecutivoM', consecutivoMRoutes);
-        this.app.use('/datos', datosRoutes);
-        this.app.use('/entrega', entregaRoutes);
-        this.app.use('/inventario', inventarioRoutes);
-        this.app.use('/listaC', listaCRoutes);
-        this.app.use('/listaP', listaPRoutes);
-        this.app.use('/listaM', listaMRoutes);
-        this.app.use('/municipio', municipioRoutes);
-        this.app.use('/permisos', permisosRoutes);
-        this.app.use('/personal', personalRoutes);
-        this.app.use('/punto', puntoRoutes);
-        this.app.use('/regional', regionalRoutes);
-        this.app.use('/reporte', reportesRoutes);
-        this.app.use('/rol', rolRoutes);
-        this.app.use('/tbienestarina', tbienestarinaRoutes);
-        this.app.use('/tdocumento', tdocumentoRoutes);
-        this.app.use('/uds', udsRoutes);
-        this.app.use('/unidad', unidadRoutes);
-        this.app.use('/usuario', usuariosRoutes);
-        this.app.use('/biometrico', biometricoRoutes);
+  //Global  variables
+  global(): void {
+    this.app.use((res, req, next) => {
+      next();
+    });
+  }
 
         this.app.use('/devoluciones', devolucionesRoutes);
         this.app.use('/entregabeneficiario', entregabeRoutes);
@@ -114,12 +80,22 @@ class Server {
         this.app.use('/cargainv', cargainventarioRoutes);
     }
 
-    start() {
-        this.app.listen(this.app.get('port'), () => {
-            console.log('Server on port', this.app.get('port'));
-        });
-    }
+    this.app.use("/devoluciones", devolucionesRoutes);
+    this.app.use("/entregabeneficiario", entregabeRoutes);
+    this.app.use("/entregacentrod", entregacendRoutes);
+    this.app.use("/entregaconsumo", entregacoRoutes);
+    this.app.use("/recuento", recuentoRoutes);
+    this.app.use("/traslados", trasladosRoutes);
+    this.app.use("/Acta", actaRoutes);
+    this.app.use("/cupos", cuposRoutes);
+    
+  }
 
+  start() {
+    this.app.listen(this.app.get("port"), () => {
+      console.log("Server on port", this.app.get("port"));
+    });
+  }
 }
 
 const server = new Server();

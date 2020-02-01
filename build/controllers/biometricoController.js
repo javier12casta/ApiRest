@@ -13,13 +13,29 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const database_1 = __importDefault(require("../database"));
+var custom = {
+    id: '',
+    Nombre: '',
+};
 class BiometricoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const biometrico = yield database_1.default.query('SELECT Huella FROM uibiometrico');
+            const biometrico = yield database_1.default.query("SELECT Huella FROM uibiometrico");
             res.json(biometrico);
         });
     }
+    create(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var valbio = req.body;
+            custom = valbio;
+            res.json(valbio);
+        });
+    }
+    valid(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            res.json(custom);
+        });
+    }
 }
-const biometricoController = new BiometricoController;
+const biometricoController = new BiometricoController();
 exports.default = biometricoController;
