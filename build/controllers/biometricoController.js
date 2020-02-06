@@ -17,6 +17,10 @@ var custom = {
     id: '',
     Nombre: '',
 };
+var custom2 = {
+    Huella1: '',
+    Huella2: '',
+};
 class BiometricoController {
     list(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -34,6 +38,18 @@ class BiometricoController {
     valid(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             res.json(custom);
+        });
+    }
+    create2(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            var valbio = req.body;
+            custom2 = valbio;
+            res.json(valbio);
+        });
+    }
+    guardar(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            res.json(custom2);
         });
     }
 }
