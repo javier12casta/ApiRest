@@ -14,6 +14,8 @@ class BiometricoRoutes {
         this.router.get('/', biometricoController.list);
         this.router.get('/val', biometricoController.valid);
         this.router.post('/', biometricoController.create);
+        this.router.get('/guardar', biometricoController.guardar);
+        this.router.post('/huella', biometricoController.create2);
     }
 
 }
