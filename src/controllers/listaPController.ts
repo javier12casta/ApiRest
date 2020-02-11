@@ -10,6 +10,21 @@ class ListaPController {
         res.json(lista);
     }
 
+      public async tabla(req: Request, res: Response): Promise<void> {
+
+       
+        const lista = await pool.query('select l.Mes , l.ValorCop , l.Referencia from listaprecios l  where l.Referencia like "g%"');
+        res.json(lista);
+    }
+
+    public async tabla1(req: Request, res: Response): Promise<void> {
+
+       
+        const lista = await pool.query('select l.Mes , l.ValorCop , l.Referencia from listaprecios l  where l.Referencia like "l%"');
+        res.json(lista);
+    }
+
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM ListaPrecios WHERE idListaPrecios = ?', [id]);

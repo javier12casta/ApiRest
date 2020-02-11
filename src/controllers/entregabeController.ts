@@ -15,6 +15,11 @@ class EntregabeController {
         res.json(entrega);
     }
 
+    public async tabla1(req: Request, res: Response): Promise<void> {
+        const entrega = await pool.query('SELECT e.idEntregaBeneficiario, e.lote,e.unidad,a.Nombres as NombrePadre,a.Parentesco , b.PrimerNombre,b.SegundoNombre,b.PrimerApellido, b.SegundoApellido ,r.TipoBienesterina FROM entregabeneficiario e, almacenes al, acudientes a, beneficiarios b, centrodistribucion c, referenciabienestarina r WHERE e.idAcudientes = a.idAcudientes AND e.idBeneficiarios = b.idBeneficiarios AND e.idCentroDistribucion = c.idCentroDistribucion AND e.idAlmacenes = al.idAlmacenes AND e.idTipoBienesterina = r.idTipoBienesterina ');
+        res.json(entrega);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM entregabeneficiario WHERE idEntregaBeneficiario = ?', [id]);

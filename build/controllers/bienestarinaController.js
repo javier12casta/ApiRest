@@ -32,6 +32,12 @@ class BienestarinaController {
             res.json(bienestarina);
         });
     }
+    datosinventario(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const bienestarina = yield database_1.default.query('SELECT b.idBienestarina,b.FechaRecepcion,ac.numero, b.lote, b.FechaVencimiento, b.Cantidad , e.cantidad , Concat(be.PrimerNombre , be.SegundoNombre , be.PrimerApellido) as nombrec , ec.lote as lote1  FROM bienestarina b , entregabeneficiario e , beneficiarios be , acta ac , entregacentrodistribucion ec where b.idEntregaBeneficiario = e.idEntregaBeneficiario and b.idacta = ac.idacta and b.identregacentrodistribucion = ec.identregacentrodistribucion');
+            res.json(bienestarina);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

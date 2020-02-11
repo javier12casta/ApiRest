@@ -20,6 +20,18 @@ class ListaPController {
             res.json(lista);
         });
     }
+    tabla(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const lista = yield database_1.default.query('select l.Mes , l.ValorCop , l.Referencia from listaprecios l  where l.Referencia like "g%"');
+            res.json(lista);
+        });
+    }
+    tabla1(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const lista = yield database_1.default.query('select l.Mes , l.ValorCop , l.Referencia from listaprecios l  where l.Referencia like "l%"');
+            res.json(lista);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;

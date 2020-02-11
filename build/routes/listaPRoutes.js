@@ -12,6 +12,8 @@ class ListaPRoutes {
     }
     config() {
         this.router.get('/', listaPController_1.default.list);
+        this.router.get('/tabla', listaPController_1.default.tabla);
+        this.router.get('/tabla1', listaPController_1.default.tabla1);
         this.router.get('/:id', listaPController_1.default.getOne);
         this.router.post('/', listaPController_1.default.create);
         this.router.put('/:id', listaPController_1.default.update);

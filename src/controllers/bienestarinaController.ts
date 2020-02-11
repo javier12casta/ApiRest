@@ -20,6 +20,11 @@ class BienestarinaController {
         res.json(bienestarina);
     }
 
+    public async datosinventario(req: Request, res: Response): Promise<void> {
+        const bienestarina = await pool.query('SELECT b.idBienestarina,b.FechaRecepcion,ac.numero, b.lote, b.FechaVencimiento, b.Cantidad , e.cantidad , Concat(be.PrimerNombre , be.SegundoNombre , be.PrimerApellido) as nombrec , ec.lote as lote1  FROM bienestarina b , entregabeneficiario e , beneficiarios be , acta ac , entregacentrodistribucion ec where b.idEntregaBeneficiario = e.idEntregaBeneficiario and b.idacta = ac.idacta and b.identregacentrodistribucion = ec.identregacentrodistribucion');
+        res.json(bienestarina);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM Bienestarina WHERE idBienestarina = ?', [id]);
