@@ -35,6 +35,16 @@ class BienestarinaController {
         res.status(404).json({ text: "The Bienestarina doesn't exits" });
     }
 
+    public async getlotes(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+        const games = await pool.query('SELECT DISTINCT (a.idBienestarina) as id, a.lote FROM bienestarina a WHERE a.idInventario = ? ', [id]);
+        console.log(games.length);
+        if (games.length > 0) {
+            return res.json(games);
+        }
+        res.status(404).json({ text: "The lotes doesn't exits" });
+    }
+
     public async create(req: Request, res: Response): Promise<void> {
         const result = await pool.query('INSERT INTO Bienestarina set ?', [req.body]);
         res.json({ message: 'Bienestarina Saved' });

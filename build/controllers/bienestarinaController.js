@@ -49,6 +49,17 @@ class BienestarinaController {
             res.status(404).json({ text: "The Bienestarina doesn't exits" });
         });
     }
+    getlotes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const { id } = req.params;
+            const games = yield database_1.default.query('SELECT DISTINCT (a.idBienestarina) as id, a.lote FROM bienestarina a WHERE a.idInventario = ? ', [id]);
+            console.log(games.length);
+            if (games.length > 0) {
+                return res.json(games);
+            }
+            res.status(404).json({ text: "The lotes doesn't exits" });
+        });
+    }
     create(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const result = yield database_1.default.query('INSERT INTO Bienestarina set ?', [req.body]);
