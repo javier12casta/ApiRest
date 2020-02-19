@@ -22,7 +22,7 @@ class EntregacendController {
     }
     tabla(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const entrega = yield database_1.default.query('SELECT e.identregacentrodistribucion,e.lote,DATE_FORMAT(e.fechavencimiento,"%d-%m-%Y") as fechavencimiento , e.cantidad,e.unidad,DATE_FORMAT(e.fecharegistro,"%d-%m-%Y") as fecharegistro,c.Nombre as centroorigen, c.Nombre as centrodestino,b.Nombre AS idAlmacenesDestino, a.Nombre, r.TipoBienesterina FROM entregacentrodistribucion e, centrodistribucion c, almacenes a,  referenciabienestarina r, almacenes b WHERE e.idCentroDistribucionOrigen = c.idCentroDistribucion AND e.idCentroDistribucionDestino=c.idCentroDistribucion AND e.idAlmacen = a.idAlmacenes AND e.idTipoBienesterina = r.idTipoBienesterina AND e.idAlmacenesDestino = b.idAlmacenes');
+            const entrega = yield database_1.default.query('SELECT e.identregacentrodistribucion,e.lote,DATE_FORMAT(e.fechavencimiento,"%d-%m-%Y") as fechavencimiento , e.cantidad,e.unidad,DATE_FORMAT(e.fecharegistro,"%d-%m-%Y") as fecharegistro , c.Nombre AS centroorigen , ce.Nombre AS centrodestino , a.Nombre As almacenorigen  , al.Nombre as almacendestino , r.TipoBienesterina FROM entregacentrodistribucion e , centrodistribucion c , centrodistribucion ce , almacenes a , almacenes al , referenciabienestarina r where  e.idCentroDistribucionDestino = ce.idCentroDistribucion and e.idCentroDistribucionOrigen = c.idCentroDistribucion and e.idAlmacen = a.idAlmacenes and e.idAlmacenesDestino = al.idAlmacenes');
             res.json(entrega);
         });
     }
