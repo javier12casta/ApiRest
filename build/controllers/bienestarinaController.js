@@ -34,7 +34,7 @@ class BienestarinaController {
     }
     datosinventario(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const bienestarina = yield database_1.default.query('SELECT DISTINCT b.idBienestarina,DATE_FORMAT(b.FechaRecepcion,"%d-%m-%Y") as FechaRecepcion, ac.numero, b.lote, DATE_FORMAT(b.FechaVencimiento,"%d-%m-%Y") as FechaVencimiento , b.Cantidad , e.cantidad , Concat(be.PrimerNombre , be.SegundoNombre , be.PrimerApellido) as nombrec , ec.lote as lote1 FROM bienestarina b , entregabeneficiario e , beneficiarios be , acta ac , entregacentrodistribucion ec GROUP BY b.idBienestarina');
+            const bienestarina = yield database_1.default.query('SELECT DISTINCT b.idBienestarina,DATE_FORMAT(b.FechaRecepcion,"%d-%m-%Y") as FechaRecepcion, ac.numero, b.lote, DATE_FORMAT(b.FechaVencimiento,"%d-%m-%Y") as FechaVencimiento , b.Cantidad , e.cantidad , Concat(be.PrimerNombre , be.SegundoNombre , be.PrimerApellido) as nombrec , ec.lote as lote1 , b.Cantidadsuma FROM bienestarina b , entregabeneficiario e , beneficiarios be , acta ac , entregacentrodistribucion ec GROUP BY b.idBienestarina');
             res.json(bienestarina);
         });
     }
