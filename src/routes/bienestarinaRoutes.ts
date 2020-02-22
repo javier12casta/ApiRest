@@ -15,6 +15,9 @@ class BienestarinaRoutes {
         this.router.get('/maxid', bienestarinaController.Maxid);
         this.router.get('/tabla', bienestarinaController.tabla);
         this.router.get('/datosi', bienestarinaController.datosinventario);
+        this.router.get('/datosien', bienestarinaController.datosinventariosalida);
+        this.router.get('/datosicen', bienestarinaController.datosinventariosacen);
+        this.router.get('/datosicon', bienestarinaController.datosinventariosacon);
         this.router.get('/:id', bienestarinaController.getOne);
         this.router.get('/lotes/:id', bienestarinaController.getlotes);
         this.router.post('/', bienestarinaController.create);

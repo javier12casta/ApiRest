@@ -25,6 +25,29 @@ class BienestarinaController {
         res.json(bienestarina);
     }
 
+    public async datosinventariosalida(req: Request, res: Response): Promise<void> {
+        const bienestarina = await pool.query('SELECT idEntregaBeneficiario as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fechasalida,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregabeneficiario ');
+        res.json(bienestarina);
+    }
+
+
+    public async datosinventariosa(req: Request, res: Response): Promise<void> {
+        const bienestarina = await pool.query('SELECT idEntregaBeneficiario as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fechasalida,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregabeneficiario');
+        res.json(bienestarina);
+    }
+
+
+    public async datosinventariosacen(req: Request, res: Response): Promise<void> {
+        const bienestarina = await pool.query('SELECT identregacentrodistribucion as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fecharegistro,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregacentrodistribucion ');
+        res.json(bienestarina);
+    }
+
+
+    public async datosinventariosacon(req: Request, res: Response): Promise<void> {
+        const bienestarina = await pool.query('SELECT idEntregaconsumointerno as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fecharegistro,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregaconsumointerno');
+        res.json(bienestarina);
+    }
+
     public async getOne(req: Request, res: Response): Promise<any> {
         const { id } = req.params;
         const games = await pool.query('SELECT * FROM Bienestarina WHERE idBienestarina = ?', [id]);

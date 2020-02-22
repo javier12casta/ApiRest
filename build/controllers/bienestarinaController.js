@@ -38,6 +38,30 @@ class BienestarinaController {
             res.json(bienestarina);
         });
     }
+    datosinventariosalida(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const bienestarina = yield database_1.default.query('SELECT idEntregaBeneficiario as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fechasalida,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregabeneficiario ');
+            res.json(bienestarina);
+        });
+    }
+    datosinventariosa(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const bienestarina = yield database_1.default.query('SELECT idEntregaBeneficiario as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fechasalida,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregabeneficiario');
+            res.json(bienestarina);
+        });
+    }
+    datosinventariosacen(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const bienestarina = yield database_1.default.query('SELECT identregacentrodistribucion as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fecharegistro,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregacentrodistribucion ');
+            res.json(bienestarina);
+        });
+    }
+    datosinventariosacon(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const bienestarina = yield database_1.default.query('SELECT idEntregaconsumointerno as idBienestarina, DATE_FORMAT(fechavencimiento,"%d-%m-%Y") as FechaVencimiento, lote, DATE_FORMAT(fecharegistro,"%d-%m-%Y") as FechaRecepcion, cantidad, Cantidadsuma as lote1, Cantidadsuma FROM entregaconsumointerno');
+            res.json(bienestarina);
+        });
+    }
     getOne(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { id } = req.params;
