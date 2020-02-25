@@ -11,7 +11,7 @@ class DevolucionesController {
     }
 
     public async devoluciontabla(req: Request, res: Response): Promise<void> {
-        const datos = await pool.query('SELECT d.iddevoluciones, d.lote, d.fechavencimiento, d.unidad, d.fecharegistro, r.Referencia, c.Nombre AS centrodistribucionorigen, c.Nombre AS centrodistribuciondestino, a.Nombre AS Nombrealmacen, b.Nombre As idAlmacenesDestino, d.cantidad, d.motivo FROM devoluciones d , referenciabienestarina r , centrodistribucion c , almacenes a, almacenes b WHERE d.idTipoBienesterina = r.idTipoBienesterina and d.idCentroDistribucionOrigen = c.idCentroDistribucion and d.idCentroDistribucionDestino = c.idCentroDistribucion and d.idAlmacenes = a.idAlmacenes AND d.idAlmacenesDestino = b.idAlmacenes');
+        const datos = await pool.query('SELECT d.iddevoluciones, d.lote, d.fechavencimiento, d.unidad, d.fecharegistro, r.Referencia, c.Nombre AS centrodistribucionorigen, c.Nombre AS centrodistribuciondestino, a.Nombre AS Nombrealmacen, b.Nombre As idAlmacenesDestino, d.cantidad, d.motivo FROM devoluciones d , referenciabienestarina r , centrodistribucion c , almacenes a, almacenes b , centrodistribucion ce WHERE d.idTipoBienesterina = r.idTipoBienesterina and  d.idCentroDistribucionOrigen = c.idCentroDistribucion and d.idCentroDistribucionDestino = ce.idCentroDistribucion and d.idAlmacenes = a.idAlmacenes and d.idAlmacenesDestino = b.idAlmacenes');
         res.json(datos);
     }
 
