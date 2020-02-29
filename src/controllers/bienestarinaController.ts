@@ -67,6 +67,15 @@ class BienestarinaController {
         }
         res.status(404).json({ text: "The lotes doesn't exits" });
     }
+    public async getlotescarga(req: Request, res: Response): Promise<any> {
+        const { id } = req.params;
+        const games = await pool.query('SELECT DISTINCT (a.idcargainventario) as id, a.lote FROM cargainventario a WHERE a.idInventario = ?', [id]);
+        console.log(games.length);
+        if (games.length > 0) {
+            return res.json(games);
+        }
+        res.status(404).json({ text: "The lotes doesn't exits" });
+    }
 
     public async create(req: Request, res: Response): Promise<void> {
         const result = await pool.query('INSERT INTO Bienestarina set ?', [req.body]);
