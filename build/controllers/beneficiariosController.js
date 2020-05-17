@@ -46,7 +46,7 @@ class BeneficiariosController {
     }
     beneficiariosreporte(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const beneficiario = yield database_1.default.query('SELECT c.idBeneficiarios, c.NumeroDocumento, c.FechaIngreso, c.FechaNacimiento, c.PrimerNombre, c.PrimerApellido, c.SegundoNombre, c.Direccion, c.Pais, c.Departamento, c.Municipio, c.TelefonoFijo, c.TelefonoFijo2,c.TelefonoMovil, c.TelefonoMovil2, c.Email, c.Estado, g.NombreGenero, t.NombreTipo, c.SegundoApellido, c.ServicioOmodalidad FROM beneficiarios c , tipodocumento t , genero g where c.idTipoDocumento = t.idTipoDocumento and c.idGenero = g.idGenero ');
+            const beneficiario = yield database_1.default.query('SELECT c.idBeneficiarios, c.NumeroDocumento,  DATE_FORMAT(c.`FechaIngreso`,"%d-%m-%Y") as FechaI , DATE_FORMAT(c.`FechaNacimiento`,"%d-%m-%Y") as FechaN, c.PrimerNombre, c.PrimerApellido, c.SegundoNombre, c.Direccion, c.Pais, c.Departamento, c.Municipio, c.TelefonoFijo, c.TelefonoFijo2,c.TelefonoMovil, c.TelefonoMovil2, c.Email, c.Estado, g.NombreGenero, t.NombreTipo, c.SegundoApellido, c.ServicioOmodalidad FROM beneficiarios c , tipodocumento t , genero g where c.idTipoDocumento = t.idTipoDocumento and c.idGenero = g.idGenero ');
             res.json(beneficiario);
         });
     }
